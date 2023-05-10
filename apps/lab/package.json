@@ -1,7 +1,6 @@
 {
-  "name": "web",
+  "name": "lab-2023",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +11,8 @@
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "*"
+    "ui": "*",
+    "experiment-data": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

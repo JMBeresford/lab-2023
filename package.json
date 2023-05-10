@@ -4,6 +4,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "turbo": "turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -13,9 +14,10 @@
     "turbo": "^1.9.3"
   },
   "name": "lab-2023",
-  "packageManager": "npm@8.15.0",
+  "packageManager": "npm@9.6.3",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "experiments/*"
   ]
 }

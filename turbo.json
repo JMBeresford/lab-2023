@@ -7,7 +7,12 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {},
+    "preDev": {
+      "inputs": ["*.ts"],
+      "outputs": ["dist/**"]
+    },
     "dev": {
+      "dependsOn": ["^preDev"],
       "cache": false,
       "persistent": true
     }
