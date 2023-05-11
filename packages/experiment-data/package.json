@@ -14,7 +14,8 @@
     "access": "public"
   },
   "dependencies": {
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "preDev": "tsc"
