@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <p>oh hi mark</p>
+      <p>Template init</p>
     </div>
   );
 }
