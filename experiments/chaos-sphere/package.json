@@ -31,7 +31,7 @@
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^8.38.0",
-    "eslint-config-custom": "workspace:*",
+    "eslint-plugin-custom": "workspace:*",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "experiment-data": "workspace:*"

@@ -14,7 +14,7 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "chaos-sphere",
     label: "Chaos Sphere",
     devPort: 10000,
-    liveUrl: "https://lab.john-beresford.com/experiments/chaossphere/",
+    liveUrl: "https://chaos-sphere.vercel.app",
   },
   "cosmic-platform": {
     name: "cosmic-platform",
