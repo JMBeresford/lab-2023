@@ -1,5 +1,5 @@
 {
-  "name": "chaos-sphere",
+  "name": "cosmic-platform",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,27 +13,30 @@
     "@react-spring/three": "^9.7.2",
     "@react-three/drei": "^9.66.6",
     "@react-three/fiber": "^8.13.0",
+    "@react-three/postprocessing": "^2.11.0",
+    "gsap": "^3.11.5",
     "leva": "^0.9.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.152.2"
+    "sass": "^1.62.1",
+    "three": "^0.152.2",
+    "three-stdlib": "^2.21.11"
   },
   "devDependencies": {
-    "@types/three": "^0.152.0",
-    "glsl-blend": "^1.0.3",
-    "glsl-noise": "^0.0.0",
     "@types/react": "^18.0.28",
-    "vite-plugin-dts": "^2.3.0",
-    "vite-plugin-glslify": "^2.0.1",
     "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.152.0",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^8.38.0",
     "eslint-plugin-custom": "workspace:*",
+    "experiment-data": "workspace:*",
+    "glsl-blend": "^1.0.3",
+    "glsl-noise": "^0.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
-    "sass": "^1.62.1",
-    "experiment-data": "workspace:*"
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-glslify": "^2.0.1"
   }
 }
