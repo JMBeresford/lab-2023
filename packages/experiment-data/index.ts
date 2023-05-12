@@ -20,7 +20,7 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "cosmic-platform",
     label: "Cosmic Platform",
     devPort: 10001,
-    liveUrl: "https://cosmic-platform.netlify.app/",
+    liveUrl: "https://cosmic-platform.vercel.app/",
   },
   "work-from-home": {
     name: "work-from-home",
