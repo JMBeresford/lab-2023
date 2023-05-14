@@ -17,7 +17,8 @@ const uniforms: Uniforms = {
 
 export type PointsMaterialProps = Uniforms & ShaderMaterial;
 
-const BasePointsMaterial = shaderMaterial(uniforms as any, vertexShader, fragmentShader, (m) => {
+// @ts-expect-error broken lib types
+const BasePointsMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
   if (!m) return;
 
   m.vertexColors = true;
