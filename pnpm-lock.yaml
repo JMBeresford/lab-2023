@@ -209,6 +209,82 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(vite@4.3.2)
 
+  experiments/extra-dimensional-input-form:
+    dependencies:
+      '@react-spring/three':
+        specifier: ^9.7.2
+        version: 9.7.2(@react-three/fiber@8.13.0)(react@18.2.0)(three@0.152.2)
+      '@react-three/drei':
+        specifier: ^9.66.6
+        version: 9.66.6(@react-three/fiber@8.13.0)(@types/three@0.152.0)(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)
+      '@react-three/fiber':
+        specifier: ^8.13.0
+        version: 8.13.0(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)
+      leva:
+        specifier: ^0.9.34
+        version: 0.9.34(react-dom@18.2.0)(react@18.2.0)
+      r3f-form:
+        specifier: ^2.0.1
+        version: 2.0.1(@react-three/drei@9.66.6)(@react-three/fiber@8.13.0)(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)(troika-three-text@0.47.1)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      three:
+        specifier: ^0.152.2
+        version: 0.152.2
+    devDependencies:
+      '@types/react':
+        specifier: ^18.0.28
+        version: 18.2.0
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: 18.2.0
+      '@types/three':
+        specifier: ^0.152.0
+        version: 0.152.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^5.57.1
+        version: 5.57.1(@typescript-eslint/parser@5.57.1)(eslint@8.38.0)(typescript@5.0.4)
+      '@typescript-eslint/parser':
+        specifier: ^5.57.1
+        version: 5.57.1(eslint@8.38.0)(typescript@5.0.4)
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.0.0
+        version: 3.0.0(vite@4.3.2)
+      eslint:
+        specifier: ^8.38.0
+        version: 8.38.0
+      eslint-plugin-custom:
+        specifier: workspace:*
+        version: link:../../packages/eslint-plugin-custom
+      experiment-data:
+        specifier: workspace:*
+        version: link:../../packages/experiment-data
+      glsl-blend:
+        specifier: ^1.0.3
+        version: 1.0.3
+      glsl-noise:
+        specifier: ^0.0.0
+        version: 0.0.0
+      sass:
+        specifier: ^1.62.1
+        version: 1.62.1
+      typescript:
+        specifier: ^5.0.2
+        version: 5.0.4
+      vite:
+        specifier: ^4.3.2
+        version: 4.3.2(sass@1.62.1)
+      vite-plugin-dts:
+        specifier: ^2.3.0
+        version: 2.3.0(vite@4.3.2)
+      vite-plugin-glslify:
+        specifier: ^2.0.1
+        version: 2.0.1(vite@4.3.2)
+
   packages/eslint-plugin-custom:
     dependencies:
       '@typescript-eslint/eslint-plugin':
@@ -4377,6 +4453,24 @@ packages:
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  /r3f-form@2.0.1(@react-three/drei@9.66.6)(@react-three/fiber@8.13.0)(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)(troika-three-text@0.47.1):
+    resolution: {integrity: sha512-9dYMH5Gc8CYBGt+U3kccEsXTIDZZvb9eMoOvcfycL+jUn/ZNBXrULpxvmLyx6gLsXqywD8YXsrHsqskYv3HftQ==}
+    peerDependencies:
+      '@react-three/drei': '>=9.0'
+      '@react-three/fiber': '>=8.0'
+      react: '>=18.0'
+      react-dom: '>=18.0'
+      three: '>=0.146.0'
+      troika-three-text: '>=0.47.0'
+    dependencies:
+      '@react-three/drei': 9.66.6(@react-three/fiber@8.13.0)(@types/three@0.152.0)(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)
+      '@react-three/fiber': 8.13.0(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      three: 0.152.2
+      troika-three-text: 0.47.1(three@0.152.2)
+    dev: false
 
   /react-colorful@5.6.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
