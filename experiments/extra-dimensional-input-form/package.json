@@ -1,0 +1,40 @@
+{
+  "name": "extra-dimensional-input-form",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-spring/three": "^9.7.2",
+    "@react-three/drei": "^9.66.6",
+    "@react-three/fiber": "^8.13.0",
+    "leva": "^0.9.34",
+    "r3f-form": "^2.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.152.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.152.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-custom": "workspace:*",
+    "experiment-data": "workspace:*",
+    "glsl-blend": "^1.0.3",
+    "glsl-noise": "^0.0.0",
+    "sass": "^1.62.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-glslify": "^2.0.1"
+  }
+}
