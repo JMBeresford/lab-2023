@@ -1,8 +1,10 @@
+import { Scene } from "./scene";
+
 function App() {
   return (
-    <div>
-      <p>Template init</p>
-    </div>
+    <>
+      <Scene />
+    </>
   );
 }
 
