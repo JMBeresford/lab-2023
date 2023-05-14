@@ -30,7 +30,6 @@ type GLTFResult = GLTF & {
     platform: THREE.Mesh;
     emissive: THREE.Mesh;
   };
-  materials: {};
 };
 
 const COUNT = 100;
@@ -51,12 +50,12 @@ export function Platform(props: JSX.IntrinsicElements["group"]) {
   bakedTex.flipY = false;
 
   const points = useMemo(() => {
-    let arr = [];
+    const arr = [];
 
     for (let i = 0; i < COUNT; i++) {
-      let x = Math.random() * 2 - 1;
-      let y = Math.random() * 2 - 1;
-      let z = Math.random() * 2 - 1;
+      const x = Math.random() * 2 - 1;
+      const y = Math.random() * 2 - 1;
+      const z = Math.random() * 2 - 1;
 
       arr.push(x, y, z);
     }
@@ -65,10 +64,10 @@ export function Platform(props: JSX.IntrinsicElements["group"]) {
   }, []);
 
   const aOffset = useMemo(() => {
-    let arr = [];
+    const arr = [];
 
     for (let i = 0; i < COUNT; i++) {
-      let offset = Math.random();
+      const offset = Math.random();
       arr[i] = offset;
     }
 

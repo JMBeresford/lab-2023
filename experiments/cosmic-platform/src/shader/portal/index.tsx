@@ -19,7 +19,8 @@ const uniforms: Uniforms = {
 
 export type PortalMaterialProps = Uniforms & ShaderMaterial;
 
-const BasePortalMaterial = shaderMaterial(uniforms as any, vertexShader, fragmentShader);
+// @ts-expect-error broken lib types
+const BasePortalMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader);
 
 extend({ BasePortalMaterial });
 

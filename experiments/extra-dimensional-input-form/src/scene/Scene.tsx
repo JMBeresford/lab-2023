@@ -10,8 +10,8 @@ function Camera() {
   const camRef = useRef<Camera>(null);
 
   useFrame(({ mouse }, delta) => {
-    let mx = -mouse.x * 0.1;
-    let my = -mouse.y * 0.1;
+    const mx = -mouse.x * 0.1;
+    const my = -mouse.y * 0.1;
 
     if (camRef.current) {
       camRef.current.position.x = damp(camRef.current.position.x, 0 + mx, 2, delta);
