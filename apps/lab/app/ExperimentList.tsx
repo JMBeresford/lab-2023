@@ -1,12 +1,9 @@
 import { ExperimentData, ExperimentDatum } from "experiment-data";
-import Link from "next/link";
 
 function ListEntry({ experiment }: { experiment: ExperimentDatum }) {
   return (
     <li>
-      <Link href={`/experiments/${experiment.pathName}`} prefetch={false}>
-        {experiment.label}
-      </Link>
+      <a href={`/experiments/${experiment.pathName}`}>{experiment.label}</a>
     </li>
   );
 }
