@@ -18,6 +18,6 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "preDev": "tsc"
+    "build:data": "tsc"
   }
 }

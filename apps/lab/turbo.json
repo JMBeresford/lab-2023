@@ -2,10 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "pipeline": {
-    "build": {
+    "build:lab": {
       "env": ["NODE_ENV"]
     },
-    "dev": {
+    "dev:lab": {
       "env": ["NODE_ENV"]
     }
   }

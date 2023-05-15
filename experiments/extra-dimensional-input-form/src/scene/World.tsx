@@ -7,6 +7,7 @@ import {
 } from "@react-three/drei";
 import { useControls } from "leva";
 import { Suspense } from "react";
+import font from "experiment-assets/extra-dimensional-input-form/montserrat_black_regular.json?url";
 
 export function World() {
   const { textColor } = useControls(
@@ -34,12 +35,7 @@ export function World() {
 
         <group rotation-y={-Math.PI / 6} position={[2.5, 0.0, -3.5]}>
           <Center top>
-            <Text3D
-              font="/montserrat_black_regular.json"
-              rotation-x={-Math.PI / 48}
-              castShadow={true}
-              curveSegments={20}
-            >
+            <Text3D font={font} rotation-x={-Math.PI / 48} castShadow={true} curveSegments={20}>
               LOGIN
               <meshStandardMaterial color={textColor} envMapIntensity={2} />
             </Text3D>

@@ -1,11 +1,9 @@
 import { Scene } from "./Scene";
 
-function App() {
+export function Experiment() {
   return (
     <div style={{ position: "fixed", inset: 0 }}>
       <Scene />
     </div>
   );
 }
-
-export default App;

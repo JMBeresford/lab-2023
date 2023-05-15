@@ -1,9 +1,8 @@
 import { Scene } from "./Scene";
-import styles from "./App.module.scss";
 
 export function Experiment() {
   return (
-    <div className={styles.root}>
+    <div style={{ position: "fixed", inset: 0 }}>
       <Scene />
     </div>
   );

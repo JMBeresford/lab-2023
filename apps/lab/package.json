@@ -1,18 +1,23 @@
 {
-  "name": "lab-2023",
+  "name": "lab",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev:lab": "next dev",
+    "build:lab": "next build",
     "lint": "next lint"
   },
   "dependencies": {
+    "chaos-sphere": "workspace:*",
+    "cosmic-platform": "workspace:*",
+    "experiment-assets": "workspace:*",
+    "experiment-data": "workspace:*",
+    "extra-dimensional-input-form": "workspace:*",
+    "file-loader": "^6.2.0",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "*",
-    "experiment-data": "*"
+    "ui": "workspace:*",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

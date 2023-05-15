@@ -1,9 +1,9 @@
-function App() {
+import { Scene } from "./Scene";
+
+export function Experiment() {
   return (
-    <div>
-      <p>Template init</p>
+    <div style={{ position: "fixed", inset: 0 }}>
+      <Scene />
     </div>
   );
 }
-
-export default App;

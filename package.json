@@ -2,7 +2,10 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:lab": "turbo run build:lab",
+    "build:data": "turbo run build:data",
     "dev": "turbo run dev",
+    "dev:lab": "turbo run dev:lab",
     "lint": "turbo run lint",
     "turbo": "turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -15,10 +18,5 @@
     "turbo": "1.9.3"
   },
   "name": "lab-2023",
-  "packageManager": "pnpm@8.5.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "experiments/*"
-  ]
+  "packageManager": "pnpm@8.5.0"
 }

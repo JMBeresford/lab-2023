@@ -19,6 +19,8 @@ import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
 import { PointsMaterial, PointsMaterialProps } from "./shader/particles";
 import { PortalMaterial, PortalMaterialProps } from "./shader/portal";
+import modelUrl from "experiment-assets/cosmic-platform/hero_model.glb?url";
+import imageUrl from "experiment-assets/cosmic-platform/heroBake.jpg";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -35,7 +37,7 @@ type GLTFResult = GLTF & {
 const COUNT = 100;
 
 export function Platform(props: JSX.IntrinsicElements["group"]) {
-  const { nodes } = useGLTF("/hero_model.glb") as GLTFResult;
+  const { nodes } = useGLTF(modelUrl) as GLTFResult;
   const group = useRef<Group>(null);
   const letters = useRef<Mesh<BufferGeometry, Material>>(null);
   const airRock1 = useRef<Mesh<BufferGeometry, Material>>(null);
@@ -46,7 +48,7 @@ export function Platform(props: JSX.IntrinsicElements["group"]) {
   const emissionRef = useRef<Mesh<BufferGeometry, PortalMaterialProps>>(null);
   const platformRef = useRef<Mesh<BufferGeometry, Material>>(null);
 
-  const bakedTex = useTexture("heroBake.jpg");
+  const bakedTex = useTexture(imageUrl);
   bakedTex.flipY = false;
 
   const points = useMemo(() => {
@@ -182,4 +184,4 @@ export function Platform(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/hero_model.glb");
+useGLTF.preload(modelUrl);
