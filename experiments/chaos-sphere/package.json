@@ -38,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "experiment-data": "workspace:*",
+    "vite-custom-config": "workspace:*",
     "glsl-blend": "^1.0.3",
     "glsl-noise": "^0.0.0",
     "leva": "^0.9.34",

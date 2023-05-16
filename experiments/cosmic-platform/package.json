@@ -35,6 +35,7 @@
     "eslint-plugin-custom": "workspace:*",
     "experiment-data": "workspace:*",
     "experiment-assets": "workspace:*",
+    "vite-custom-config": "workspace:*",
     "glsl-blend": "^1.0.3",
     "glsl-noise": "^0.0.0",
     "typescript": "^5.0.2",

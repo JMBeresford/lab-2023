@@ -27,6 +27,7 @@
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^8.38.0",
     "eslint-plugin-custom": "workspace:*",
+    "vite-custom-config": "workspace:*",
     "experiment-data": "workspace:*",
     "experiment-assets": "workspace:*",
     "glsl-blend": "^1.0.3",
