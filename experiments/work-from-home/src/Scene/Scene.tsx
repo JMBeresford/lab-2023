@@ -5,7 +5,11 @@ import { Canvas } from "@react-three/fiber";
 
 export function Scene() {
   return (
-    <Canvas>
+    <Canvas
+      onCreated={({ gl }) => {
+        gl.setClearColor("black");
+      }}
+    >
       <mesh>
         <sphereGeometry args={[20, 5, 5]} />
         <meshBasicMaterial color="black" />
