@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["ui", "chaos-sphere", "cosmic-platform"],
+  transpilePackages: ["ui"],
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
