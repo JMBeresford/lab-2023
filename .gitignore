@@ -37,3 +37,6 @@ yarn-error.log*
 
 # outs
 dist
+
+# vite
+**/vite.config.ts.timestamp*

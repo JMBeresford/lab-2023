@@ -12,6 +12,7 @@
     "experiment-assets": "workspace:*",
     "experiment-data": "workspace:*",
     "extra-dimensional-input-form": "workspace:*",
+    "work-from-home": "workspace:*",
     "file-loader": "^6.2.0",
     "next": "^13.4.1",
     "react": "^18.2.0",
