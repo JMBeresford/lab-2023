@@ -2,15 +2,7 @@ import { shaderMaterial } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import { useRef } from "react";
-import {
-  AdditiveBlending,
-  BufferGeometry,
-  Color,
-  DoubleSide,
-  Mesh,
-  ShaderMaterial,
-  Vector3,
-} from "three";
+import { BufferGeometry, Color, DoubleSide, Mesh, ShaderMaterial, Vector3 } from "three";
 import { vertexShader, fragmentShader } from "./shaders/wind";
 import { animated, useSpring } from "@react-spring/three";
 
@@ -42,7 +34,7 @@ type WindProps = Partial<
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    windMaterial: JSX.IntrinsicElements["shaderMaterial"] & WindProps;
+    windMaterial: WindProps;
   }
 }
 
@@ -81,7 +73,6 @@ const Wind = ({ stage }: { stage: number }) => {
     <group renderOrder={2}>
       <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.75, 0]} renderOrder={1}>
         <ringGeometry args={[innerRadius, outerRadius, 64, 64]} />
-        {/* @ts-expect-error false positive infinite depth error */}
         <AnimWindMaterial
           uNoiseScale={windScale}
           uNoiseSize={windSize}

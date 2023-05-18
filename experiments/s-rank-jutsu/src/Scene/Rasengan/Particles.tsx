@@ -39,7 +39,7 @@ type ParticlesProps = Partial<Record<keyof typeof uniforms, number | Color | str
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    particleMaterial: JSX.IntrinsicElements["shaderMaterial"] & ParticlesProps;
+    particleMaterial: ParticlesProps;
   }
 }
 
@@ -113,7 +113,6 @@ const Particles = ({ count = 2000, stage }: { count?: number; stage: number }) =
   return (
     <>
       <Points ref={ref} positions={positions}>
-        {/* @ts-expect-error false positive infinite depth error */}
         <AnimatedParticlesMaterial
           uMask={maskTex}
           uDpr={viewport.dpr}

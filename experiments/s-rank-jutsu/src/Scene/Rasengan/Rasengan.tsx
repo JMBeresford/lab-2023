@@ -55,7 +55,7 @@ type RasenganProps = Partial<Record<keyof typeof uniforms, number | Color | Vect
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    rasenganMaterial: JSX.IntrinsicElements["shaderMaterial"] & RasenganProps;
+    rasenganMaterial: RasenganProps;
   }
 }
 
