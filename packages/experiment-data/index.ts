@@ -4,6 +4,7 @@ const experiments = [
   "work-from-home",
   "extra-dimensional-input-form",
   "oceanic-horizon",
+  "s-rank-jutsu",
 ] as const;
 
 export type Experiment = typeof experiments[number];
@@ -39,5 +40,10 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "oceanic-horizon",
     label: "Oceanic Horizon",
     pathName: "OceanicHorizon",
+  },
+  "s-rank-jutsu": {
+    name: "s-rank-jutsu",
+    label: "S-Rank Jutsu",
+    pathName: "SRankJutsu",
   },
 };

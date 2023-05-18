@@ -49,6 +49,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      s-rank-jutsu:
+        specifier: workspace:*
+        version: link:../../experiments/s-rank-jutsu
       ui:
         specifier: workspace:*
         version: link:../../packages/ui
