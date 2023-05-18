@@ -662,6 +662,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.3.4
         version: 0.3.4(eslint@8.38.0)
+      experiment-assets:
+        specifier: workspace:*
+        version: link:../../packages/experiment-assets
       experiment-data:
         specifier: workspace:*
         version: link:../../packages/experiment-data
