@@ -18,5 +18,5 @@
     "turbo": "1.9.3"
   },
   "name": "lab-2023",
-  "packageManager": "pnpm@8.5.0"
+  "packageManager": "pnpm@8.5.1"
 }
