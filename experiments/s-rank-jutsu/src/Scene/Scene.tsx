@@ -19,7 +19,7 @@ function Fog() {
 
   useEffect(() => {
     gl.setClearColor(fogColor);
-  }, [fogColor]);
+  }, [fogColor, gl]);
 
   return <fog attach="fog" args={[fogColor, 1, 17]} />;
 }
