@@ -30,17 +30,17 @@ export function Camera() {
   useFrame(({ mouse }, delta) => {
     if (!ref.current) return;
 
-    let lambda = 1.2;
-    let position = views[view].position;
-    let rotation = views[view].rotation;
+    const lambda = 1.2;
+    const position = views[view].position;
+    const rotation = views[view].rotation;
 
-    let x = damp(ref.current.position.x, position[0], lambda, delta);
-    let y = damp(ref.current.position.y, position[1], lambda, delta);
-    let z = damp(ref.current.position.z, position[2], lambda, delta);
+    const x = damp(ref.current.position.x, position[0], lambda, delta);
+    const y = damp(ref.current.position.y, position[1], lambda, delta);
+    const z = damp(ref.current.position.z, position[2], lambda, delta);
 
     let rx = damp(ref.current.rotation.x, rotation[0], lambda, delta);
     let ry = damp(ref.current.rotation.y, rotation[1], lambda, delta);
-    let rz = damp(ref.current.rotation.z, rotation[2], lambda, delta);
+    const rz = damp(ref.current.rotation.z, rotation[2], lambda, delta);
 
     if (phoneRotation.current !== undefined) {
       ry += (phoneRotation.current * Math.PI) / 180;

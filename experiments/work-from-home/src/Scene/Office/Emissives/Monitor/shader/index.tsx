@@ -29,7 +29,4 @@ declare module "@react-three/fiber" {
   }
 }
 
-export const MonitorMaterial = (props: Uniforms) => (
-  // @ts-ignore
-  <baseMonitorMaterial {...props} />
-);
+export const MonitorMaterial = (props: Uniforms) => <baseMonitorMaterial {...props} />;
