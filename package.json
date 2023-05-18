@@ -5,7 +5,7 @@
     "build:lab": "turbo run build:lab",
     "build:data": "turbo run build:data",
     "dev": "turbo run dev",
-    "dev:lab": "turbo run dev:lab",
+    "dev:lab": "turbo run dev:lab --concurrency 20",
     "lint": "turbo run lint",
     "turbo": "turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

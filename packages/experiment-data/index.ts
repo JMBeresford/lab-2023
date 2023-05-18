@@ -3,6 +3,7 @@ const experiments = [
   "cosmic-platform",
   "work-from-home",
   "extra-dimensional-input-form",
+  "oceanic-horizon",
 ] as const;
 
 export type Experiment = typeof experiments[number];
@@ -33,5 +34,10 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "extra-dimensional-input-form",
     label: "Extra Dimensional Input Form",
     pathName: "ExtraDimensionalInputForm",
+  },
+  "oceanic-horizon": {
+    name: "oceanic-horizon",
+    label: "Oceanic Horizon",
+    pathName: "OceanicHorizon",
   },
 };

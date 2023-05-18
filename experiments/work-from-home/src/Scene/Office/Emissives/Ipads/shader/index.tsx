@@ -29,7 +29,4 @@ declare module "@react-three/fiber" {
   }
 }
 
-export const IpadMaterial = (props: Uniforms) => (
-  // @ts-ignore
-  <baseIpadMaterial {...props} />
-);
+export const IpadMaterial = (props: Uniforms) => <baseIpadMaterial {...props} />;
