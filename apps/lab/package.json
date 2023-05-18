@@ -14,6 +14,7 @@
     "extra-dimensional-input-form": "workspace:*",
     "work-from-home": "workspace:*",
     "oceanic-horizon": "workspace:*",
+    "s-rank-jutsu": "workspace:*",
     "file-loader": "^6.2.0",
     "next": "^13.4.1",
     "react": "^18.2.0",
