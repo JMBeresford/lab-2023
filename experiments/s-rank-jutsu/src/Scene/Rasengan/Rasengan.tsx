@@ -1,7 +1,7 @@
 import { shaderMaterial, Text } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
-import font from "experiment-assets/s-rank-jutsu/MajorMonoDisplay.ttf";
+import font from "experiment-assets/fonts/MajorMonoDisplay.ttf";
 import { Suspense, useRef, useState } from "react";
 import {
   AdditiveBlending,
