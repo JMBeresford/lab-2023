@@ -37,6 +37,9 @@ importers:
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.83.1)
+      metaballs:
+        specifier: workspace:*
+        version: link:../../experiments/metaballs
       next:
         specifier: ^13.4.1
         version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
