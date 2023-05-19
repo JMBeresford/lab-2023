@@ -52,6 +52,9 @@ importers:
       s-rank-jutsu:
         specifier: workspace:*
         version: link:../../experiments/s-rank-jutsu
+      skywalker:
+        specifier: workspace:*
+        version: link:../../experiments/skywalker
       ui:
         specifier: workspace:*
         version: link:../../packages/ui
@@ -176,9 +179,6 @@ importers:
       rollup:
         specifier: ^3.21.7
         version: 3.21.7
-      rollup-watch:
-        specifier: ^4.3.1
-        version: 4.3.1
       three:
         specifier: ^0.152.2
         version: 0.152.2
