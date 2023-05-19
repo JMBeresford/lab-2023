@@ -6,6 +6,7 @@ const experiments = [
   "oceanic-horizon",
   "s-rank-jutsu",
   "skywalker",
+  "metaballs",
 ] as const;
 
 export type Experiment = typeof experiments[number];
@@ -51,5 +52,10 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "skywalker",
     label: "Skywalker",
     pathName: "Skywalker",
+  },
+  metaballs: {
+    name: "metaballs",
+    label: "Metaballs",
+    pathName: "Metaballs",
   },
 };
