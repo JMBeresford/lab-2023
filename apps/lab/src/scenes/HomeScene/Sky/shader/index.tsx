@@ -25,9 +25,11 @@ extend({ BaseSkyMaterial });
 
 export type SkyMaterialProps = Uniforms & ShaderMaterial;
 
-declare module "@react-three/fiber" {
-  interface ThreeElements {
-    baseSkyMaterial: MaterialNode<SkyMaterialProps, typeof BaseSkyMaterial>;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      baseSkyMaterial: MaterialNode<SkyMaterialProps, typeof BaseSkyMaterial>;
+    }
   }
 }
 

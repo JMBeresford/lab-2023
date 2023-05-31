@@ -70,9 +70,6 @@ importers:
       oceanic-horizon:
         specifier: workspace:*
         version: link:../../experiments/oceanic-horizon
-      postprocessing:
-        specifier: ^6.31.0
-        version: 6.31.0(three@0.152.2)
       raw-loader:
         specifier: ^4.0.2
         version: 4.0.2(webpack@5.83.1)

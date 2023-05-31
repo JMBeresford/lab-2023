@@ -1,5 +1,5 @@
 import { SceneRoot } from "@/helpers/SceneRoot";
-import { Nav } from "../src/components/Nav/Nav";
+import { Nav } from "../src/components/Nav";
 import styles from "./layout.module.scss";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

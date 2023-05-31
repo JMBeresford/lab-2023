@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div className={styles.hero}>
       <div className={styles.text}>
-        <h3>John Beresford's</h3>
+        <h3>John Beresford`&apos;`s</h3>
         <h1>Laboratory</h1>
       </div>
 

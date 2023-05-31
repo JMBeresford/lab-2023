@@ -24,7 +24,6 @@
     "metaballs": "workspace:*",
     "next": "^13.4.1",
     "oceanic-horizon": "workspace:*",
-    "postprocessing": "^6.31.0",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

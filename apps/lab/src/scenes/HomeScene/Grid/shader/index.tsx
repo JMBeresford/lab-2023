@@ -24,9 +24,11 @@ extend({ BaseGridMaterial });
 
 export type GridMaterialProps = Uniforms & ShaderMaterial;
 
-declare module "@react-three/fiber" {
-  interface ThreeElements {
-    baseGridMaterial: MaterialNode<GridMaterialProps, typeof BaseGridMaterial>;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      baseGridMaterial: MaterialNode<GridMaterialProps, typeof BaseGridMaterial>;
+    }
   }
 }
 
