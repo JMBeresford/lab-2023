@@ -8,10 +8,8 @@ const Experiment = dynamic(() => import("oceanic-horizon").then((mod) => mod.Exp
 
 export default function Page() {
   return (
-    <div>
-      <Suspense fallback={null}>
-        <Experiment />
-      </Suspense>
-    </div>
+    <Suspense fallback={null}>
+      <Experiment />
+    </Suspense>
   );
 }

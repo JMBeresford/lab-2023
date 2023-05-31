@@ -1,8 +1,17 @@
+import { SceneRoot } from "@/helpers/SceneRoot";
+import { Nav } from "../src/components/Nav/Nav";
+import styles from "./layout.module.scss";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0, boxSizing: "border-box", overflow: "visible" }}>
-        {children}
+      <body className={styles.body}>
+        <SceneRoot>
+          <div className={styles.layout}>
+            <Nav />
+            {children}
+          </div>
+        </SceneRoot>
       </body>
     </html>
   );

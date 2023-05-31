@@ -1,0 +1,35 @@
+$path-gap: 0.5rem;
+
+.nav {
+  position: relative;
+  z-index: 50;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 0;
+
+    min-height: 7vh;
+    margin: 0 auto;
+    width: 90%;
+    max-width: min(90%, 1500px);
+  }
+
+  a {
+    text-decoration: none;
+    border: 1px solid red;
+  }
+
+  .path {
+    .root,
+    .slash {
+      padding: 0 $path-gap;
+    }
+    display: flex;
+
+    a {
+      display: flex;
+    }
+  }
+}

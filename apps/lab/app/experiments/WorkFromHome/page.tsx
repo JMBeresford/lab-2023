@@ -8,10 +8,8 @@ const Experiment = dynamic(() => import("work-from-home").then((mod) => mod.Expe
 
 export default function Page() {
   return (
-    <div>
-      <Suspense fallback={null}>
-        <Experiment />
-      </Suspense>
-    </div>
+    <Suspense fallback={null}>
+      <Experiment />
+    </Suspense>
   );
 }

@@ -8,10 +8,8 @@ const Experiment = dynamic(() => import("metaballs").then((mod) => mod.Experimen
 
 export default function Page() {
   return (
-    <div>
-      <Suspense fallback={null}>
-        <Experiment />
-      </Suspense>
-    </div>
+    <Suspense fallback={null}>
+      <Experiment />
+    </Suspense>
   );
 }

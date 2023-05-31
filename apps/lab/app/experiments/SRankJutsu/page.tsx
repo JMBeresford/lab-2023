@@ -8,10 +8,8 @@ const Experiment = dynamic(() => import("s-rank-jutsu").then((mod) => mod.Experi
 
 export default function Page() {
   return (
-    <div>
-      <Suspense fallback={null}>
-        <Experiment />
-      </Suspense>
-    </div>
+    <Suspense fallback={null}>
+      <Experiment />
+    </Suspense>
   );
 }

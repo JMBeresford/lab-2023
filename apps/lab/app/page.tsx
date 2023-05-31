@@ -1,12 +1,23 @@
-import { Header } from "ui";
-import { ExperimentList } from "./ExperimentList";
+import Link from "next/link";
+import styles from "./page.module.scss";
+import { HomeScene } from "@/scenes/HomeScene";
+import { ScenePortal } from "@/helpers/ScenePortal";
 
 export default function Page() {
   return (
-    <>
-      <Header text="Web" />
+    <div className={styles.hero}>
+      <div className={styles.text}>
+        <h3>John Beresford's</h3>
+        <h1>Laboratory</h1>
+      </div>
 
-      <ExperimentList />
-    </>
+      <Link href="/experiments" className={styles.button}>
+        Enter
+      </Link>
+
+      <ScenePortal>
+        <HomeScene />
+      </ScenePortal>
+    </div>
   );
 }
