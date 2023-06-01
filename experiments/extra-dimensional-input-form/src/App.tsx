@@ -1,4 +1,4 @@
-import { Scene } from "./Scene";
+import { Scene } from "./Scene/Scene";
 
 export function Experiment() {
   return (
