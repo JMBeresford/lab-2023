@@ -1,13 +1,13 @@
-import { useFrame, type Camera, Canvas } from "@react-three/fiber";
+import { useFrame, Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useRef } from "react";
 import { damp } from "three/src/math/MathUtils";
 import { World } from "./World";
 import { Login } from "./Login";
-import { ACESFilmicToneMapping } from "three";
+import { ACESFilmicToneMapping, PerspectiveCamera as CameraProps } from "three";
 
 function Camera() {
-  const camRef = useRef<Camera>(null);
+  const camRef = useRef<CameraProps>(null);
 
   useFrame(({ mouse }, delta) => {
     const mx = -mouse.x * 0.1;

@@ -3,7 +3,7 @@ import { Euler, Vector3, useThree } from "@react-three/fiber";
 import { useMemo, useState } from "react";
 import { animated, useSpring } from "@react-spring/three";
 import { useControls } from "leva";
-import { clamp } from "three/src/math/MathUtils.js";
+import { clamp } from "three/src/math/MathUtils";
 import { Input, Label } from "r3f-form";
 import { Text as InputText } from "r3f-form/dist/Input";
 
