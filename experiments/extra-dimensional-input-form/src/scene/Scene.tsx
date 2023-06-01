@@ -1,7 +1,7 @@
 import { useFrame, type Camera, Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useRef } from "react";
-import { damp } from "three/src/math/MathUtils.js";
+import { damp } from "three/src/math/MathUtils";
 import { World } from "./World";
 import { Login } from "./Login";
 import { ACESFilmicToneMapping } from "three";
