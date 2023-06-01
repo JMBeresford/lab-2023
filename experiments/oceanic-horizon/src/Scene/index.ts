@@ -1,3 +1,1 @@
-import { Scene } from "./Scene";
-
-export { Scene };
+export { Scene } from "./Scene";

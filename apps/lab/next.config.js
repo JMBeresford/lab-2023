@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["ui"],
+  transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing"],
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({

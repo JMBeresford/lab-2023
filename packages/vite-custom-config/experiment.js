@@ -8,6 +8,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import { glslify } from "vite-plugin-glslify";
+import viteTsconfig from "tsconfig/vite.json" assert { type: "json" };
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 const root = process.platform === "win32" ? path.resolve("/") : "/";
@@ -49,7 +50,7 @@ export default defineConfig({
             ["@babel/plugin-transform-runtime", { regenerator: false, useESModules: true }],
           ],
         }),
-        typescript({ compilerOptions: { module: "esnext" } }),
+        typescript({ compilerOptions: viteTsconfig.compilerOptions }),
         resolve({ extensions }),
         terser(),
       ],

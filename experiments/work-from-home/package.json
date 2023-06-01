@@ -50,6 +50,7 @@
     "three": "^0.152.2",
     "three-stdlib": "^2.21.11",
     "tslib": "^2.5.0",
+    "tsconfig": "workspace:*",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-custom-config": "workspace:*",

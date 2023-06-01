@@ -8,8 +8,8 @@ export function Sky() {
   const ref = useRef<Mesh<BufferGeometry, SkyMaterialProps>>(undefined);
 
   const { color1, color2 } = useControls("sky", {
-    color1: "#270042",
-    color2: "#480038",
+    color1: "#2a0048",
+    color2: "#660050",
   });
 
   useFrame(({ clock }) => {

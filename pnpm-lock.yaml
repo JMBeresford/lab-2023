@@ -70,6 +70,9 @@ importers:
       oceanic-horizon:
         specifier: workspace:*
         version: link:../../experiments/oceanic-horizon
+      postprocessing:
+        specifier: ^6.31.0
+        version: 6.31.0(three@0.152.2)
       raw-loader:
         specifier: ^4.0.2
         version: 4.0.2(webpack@5.84.1)
@@ -221,6 +224,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -359,6 +365,9 @@ importers:
       three-stdlib:
         specifier: ^2.21.11
         version: 2.21.11(three@0.152.2)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -491,6 +500,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -621,6 +633,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -741,6 +756,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -864,6 +882,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -994,6 +1015,9 @@ importers:
       three:
         specifier: ^0.152.2
         version: 0.152.2
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -1123,6 +1147,9 @@ importers:
       three-stdlib:
         specifier: ^2.21.11
         version: 2.21.11(three@0.152.2)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -1247,6 +1274,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.0.0
         version: 4.0.0(vite@4.3.2)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
       vite:
         specifier: ^4.3.2
         version: 4.3.2(sass@1.62.1)

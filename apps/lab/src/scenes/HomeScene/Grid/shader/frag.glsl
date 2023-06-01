@@ -49,7 +49,8 @@ void main() {
   // handle opacity for horizontal glow
   glowRow *= gridY * camFade;
 
-  float glow = glowCol + glowRow;
+  float glow = 0.175 * camFade;
+  glow += glowCol + glowRow;
 
   float opacity = glow;
   vec3 color = uColor * 1.25 * opacity;

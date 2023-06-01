@@ -33,6 +33,7 @@
     "glsl-blend": "^1.0.3",
     "glsl-noise": "^0.0.0",
     "sass": "^1.62.1",
+    "tsconfig": "workspace:*",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0",

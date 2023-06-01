@@ -35,6 +35,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0",
-    "vite-plugin-glslify": "^2.0.1"
+    "vite-plugin-glslify": "^2.0.1",
+    "tsconfig": "workspace:*"
   }
 }

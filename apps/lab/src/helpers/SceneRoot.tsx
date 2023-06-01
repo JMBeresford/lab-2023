@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { SceneTunnel } from "./tunnel";
 import { ReactNode, useRef } from "react";
+import { ACESFilmicToneMapping } from "three";
 
 export function SceneRoot(props: { children: ReactNode }) {
   const ref = useRef();
@@ -19,7 +20,7 @@ export function SceneRoot(props: { children: ReactNode }) {
     >
       {props.children}
       <Canvas
-        gl={{ antialias: false }}
+        gl={{ antialias: false, toneMappingExposure: 3, toneMapping: ACESFilmicToneMapping }}
         style={{ position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none" }}
         eventSource={ref}
         eventPrefix="client"
