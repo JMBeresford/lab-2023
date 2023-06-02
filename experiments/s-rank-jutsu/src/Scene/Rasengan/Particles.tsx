@@ -2,7 +2,7 @@ import { shaderMaterial, useTexture, Points } from "@react-three/drei";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import { vertexShader, fragmentShader } from "./shaders/particles";
-import particleMaskImg from "experiment-assets/s-rank-jutsu/particleMask.png";
+import particleMaskImg from "experiment-assets/images/particleMask.png";
 import {
   AdditiveBlending,
   BufferAttribute,

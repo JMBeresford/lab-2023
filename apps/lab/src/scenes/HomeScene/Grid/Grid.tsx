@@ -8,7 +8,7 @@ export function Grid() {
   const ref = useRef<Mesh<BufferGeometry, GridMaterialProps>>(undefined);
 
   const { color } = useControls("grid", {
-    color: "#ad6eff",
+    color: "#9d52fe",
   });
 
   useFrame(({ clock }) => {

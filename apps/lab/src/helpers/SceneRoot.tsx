@@ -20,7 +20,7 @@ export function SceneRoot(props: { children: ReactNode }) {
     >
       {props.children}
       <Canvas
-        gl={{ antialias: false, toneMappingExposure: 3, toneMapping: ACESFilmicToneMapping }}
+        gl={{ antialias: false, toneMappingExposure: 1, toneMapping: ACESFilmicToneMapping }}
         style={{ position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none" }}
         eventSource={ref}
         eventPrefix="client"

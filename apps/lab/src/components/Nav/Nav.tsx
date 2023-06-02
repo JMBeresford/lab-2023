@@ -1,8 +1,15 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import styles from "./Nav.module.scss";
 import Link from "next/link";
+import { MuteButton } from "./MuteButton";
+import { Exo } from "next/font/google";
+
+const exo = Exo({
+  subsets: ["latin-ext"],
+  display: "swap",
+});
 
 export function Nav() {
   const path = usePathname();
@@ -12,14 +19,13 @@ export function Nav() {
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.content}>
-        <div>
-          <button>mute</button>
-        </div>
+      <div className={`${styles.content} ${exo.className}`}>
+        <MuteButton />
 
         <div className={styles.path}>
-          <Link href="/" className={styles.root}>
-            /
+          <Link href="/">
+            home
+            <div className={styles.slash}>/</div>
           </Link>
           {parts.map((part, i) => (
             <Link key={i} href={parts.slice(0, i + 1).join("/")}>
@@ -30,7 +36,7 @@ export function Nav() {
         </div>
 
         <a className={styles.portfolioLink} type="button" href="https://john-beresford.com">
-          Portfolio
+          VISIT MY PORTFOLIO
         </a>
       </div>
     </nav>

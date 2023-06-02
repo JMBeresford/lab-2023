@@ -1,19 +1,77 @@
 $path-gap: 0.5rem;
+$mute-size: 1rem;
 
 .nav {
   position: relative;
   z-index: 50;
 
   .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-basis: 0;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // flex-basis: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
 
-    min-height: 7vh;
+    min-height: 10vh;
     margin: 0 auto;
     width: 90%;
     max-width: min(90%, 1500px);
+
+    .muteButton {
+      justify-self: start;
+      position: relative;
+      opacity: 1;
+      border-bottom: 2px white solid;
+      padding: 0 2px;
+
+      button {
+        cursor: pointer;
+        display: flex;
+        border: none;
+        background-color: none;
+        background: none;
+        height: $mute-size;
+        width: $mute-size;
+        gap: 0.1rem;
+
+        .bar {
+          width: 25%;
+          height: 100%;
+          background-color: white;
+
+          transform-origin: bottom;
+          transform: scaleY(0.125);
+
+          transition: opacity 0.75s ease-in-out;
+          animation: mute-animation 0.5s ease-in-out infinite alternate-reverse;
+        }
+      }
+
+      &.muted {
+        opacity: 0.5;
+        .bar {
+          animation-play-state: paused;
+        }
+      }
+    }
+
+    .portfolioLink {
+      justify-self: end;
+
+      background-color: rgb(50, 211, 255);
+      color: black;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.25rem 0.6rem;
+
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: rgb(50, 166, 255);
+      }
+    }
   }
 
   a {
@@ -21,6 +79,7 @@ $path-gap: 0.5rem;
   }
 
   .path {
+    text-align: center;
     .root,
     .slash {
       padding: 0 $path-gap;
@@ -29,6 +88,17 @@ $path-gap: 0.5rem;
 
     a {
       display: flex;
+      text-transform: uppercase;
     }
+  }
+}
+
+@keyframes mute-animation {
+  0% {
+    transform: initial;
+  }
+
+  0% {
+    transform: scaleY(1);
   }
 }
