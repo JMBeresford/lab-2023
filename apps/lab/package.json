@@ -34,7 +34,8 @@
     "tunnel-rat": "^0.1.2",
     "ui": "workspace:*",
     "url-loader": "^4.1.1",
-    "work-from-home": "workspace:*"
+    "work-from-home": "workspace:*",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
