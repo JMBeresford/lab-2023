@@ -1,21 +1,20 @@
 "use client";
 
 import { Camera } from "./Camera";
-import { Autofocus, EffectComposer, Glitch, SMAA } from "@react-three/postprocessing";
+import { EffectComposer, SMAA } from "@react-three/postprocessing";
 import { Sky } from "./Sky";
 import { Grid } from "./Grid";
 import { Particles } from "./Particles";
-import { Suspense, useState } from "react";
-import { Vector2 } from "three";
+import { Suspense } from "react";
+import { Reticle } from "./Reticle";
 
 export function HomeScene() {
-  const [glitch, setGlitch] = useState(true);
-
   return (
     <>
       <Sky />
       <Particles />
       <Grid />
+      <Reticle />
       <Camera />
 
       <Suspense fallback={null}>

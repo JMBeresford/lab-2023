@@ -2,7 +2,7 @@ import { Points, useTexture } from "@react-three/drei";
 import { useControls } from "leva";
 import { useEffect, useMemo, useRef } from "react";
 import { randFloat } from "three/src/math/MathUtils";
-import particleMaskImg from "experiment-assets/images/particleMask.png";
+import particleMaskImg from "experiment-assets/images/particleMask.png?url";
 import { ParticlesMaterial, ParticlesMaterialProps } from "./shader";
 import { BufferAttribute, BufferGeometry, Points as PointsImpl } from "three";
 import { useFrame } from "@react-three/fiber";
@@ -11,7 +11,7 @@ const BOX_WIDTH = 10;
 
 export function Particles() {
   const ref = useRef<PointsImpl<BufferGeometry, ParticlesMaterialProps>>(undefined);
-  const maskTex = useTexture(particleMaskImg as unknown as string);
+  const maskTex = useTexture(particleMaskImg);
 
   const { count } = useControls({
     count: { value: 750, min: 500, max: 3000, step: 100 },

@@ -1,10 +1,12 @@
 "use client";
 
 import { Leva } from "leva";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function Debug() {
-  "use client";
-  const params = useSearchParams();
-  return <Leva hidden={!params.get("debug")} />;
+  const [debug, setDebug] = useState(false);
+
+  useEffect(() => setDebug(window.location.hash.includes("debug")), []);
+
+  return <Leva hidden={!debug} titleBar={{ position: { x: 0, y: 50 } }} />;
 }

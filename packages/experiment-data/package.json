@@ -3,21 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.ts",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "tsconfig": "workspace:*",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "next": "13.4.4"
   },
-  "scripts": {
-    "build:data": "tsc"
+  "peerDependencies": {
+    "next": "13.4.4"
   }
 }

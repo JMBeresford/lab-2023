@@ -1,6 +1,7 @@
 uniform float uTime;
 uniform vec3 uColor1;
 uniform vec3 uColor2;
+
 varying vec3 vPos;
 
 #pragma glslify: snoise4 = require('glsl-noise/simplex/4d');

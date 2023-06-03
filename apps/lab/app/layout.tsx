@@ -2,6 +2,7 @@ import { SceneRoot } from "@/helpers/SceneRoot";
 import { Nav } from "../src/components/Nav";
 import styles from "./layout.module.scss";
 import { Debug } from "@/components/Debug";
+import { Suspense } from "react";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </div>
         </SceneRoot>
-        <Debug />
+
+        <Suspense fallback={null}>
+          <Debug />
+        </Suspense>
       </body>
     </html>
   );

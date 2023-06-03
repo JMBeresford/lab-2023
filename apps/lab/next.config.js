@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing"],
+  transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
@@ -21,6 +21,8 @@ module.exports = {
       ],
     });
 
+    console.log(config.exclude);
+
     // shader support
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
@@ -34,6 +36,7 @@ module.exports = {
       test: /\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i,
       loader: "url-loader",
       options: {
+        resourceQuery: [/url/],
         fallback: "file-loader",
         name: "[name]-[hash].[ext]",
         esModule: config.esModule || false,

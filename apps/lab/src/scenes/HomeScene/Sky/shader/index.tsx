@@ -9,6 +9,7 @@ type Uniforms = {
   uColor1?: Color | number;
   uColor2?: Color | number;
 };
+
 const uniforms: Uniforms = {
   uTime: 0,
   uColor1: new Color(),

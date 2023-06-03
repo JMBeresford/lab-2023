@@ -1,3 +1,6 @@
+import chaosSphereImg from "./images/chaossphere.png";
+import { StaticImageData } from "next/image";
+
 const experiments = [
   "chaos-sphere",
   "cosmic-platform",
@@ -15,6 +18,7 @@ export type ExperimentDatum = {
   name: string;
   label: string;
   pathName: string;
+  image?: StaticImageData;
 };
 
 export const ExperimentData: Record<Experiment, ExperimentDatum> = {
@@ -22,6 +26,7 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "chaos-sphere",
     label: "Chaos Sphere",
     pathName: "ChaosSphere",
+    image: chaosSphereImg,
   },
   "cosmic-platform": {
     name: "cosmic-platform",
