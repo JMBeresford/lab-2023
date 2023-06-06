@@ -5,6 +5,7 @@ import styles from "./Nav.module.scss";
 import Link from "next/link";
 import { MuteButton } from "./MuteButton";
 import { Exo } from "next/font/google";
+import { hoverHandlers } from "@/helpers/utils";
 
 const exo = Exo({
   subsets: ["latin-ext"],
@@ -23,19 +24,24 @@ export function Nav() {
         <MuteButton />
 
         <div className={styles.path}>
-          <Link href="/">
+          <Link href="/" {...hoverHandlers}>
             home
             <div className={styles.slash}>/</div>
           </Link>
           {parts.map((part, i) => (
-            <Link key={i} href={parts.slice(0, i + 1).join("/")}>
+            <Link key={i} href={parts.slice(0, i + 1).join("/")} {...hoverHandlers}>
               {part}
               <div className={styles.slash}>/</div>
             </Link>
           ))}
         </div>
 
-        <a className={styles.portfolioLink} type="button" href="https://john-beresford.com">
+        <a
+          className={styles.portfolioLink}
+          type="button"
+          href="https://john-beresford.com"
+          {...hoverHandlers}
+        >
           VISIT MY PORTFOLIO
         </a>
       </div>

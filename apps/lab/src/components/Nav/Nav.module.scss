@@ -89,6 +89,17 @@ $mute-size: 1rem;
     a {
       display: flex;
       text-transform: uppercase;
+
+      transition: opacity 0.25s ease-in;
+
+      &:not(:last-child):not(:hover) {
+        opacity: 0.5;
+      }
+
+      &:last-child {
+        pointer-events: none;
+        touch-action: none;
+      }
     }
   }
 }

@@ -19,6 +19,9 @@ importers:
 
   apps/lab:
     dependencies:
+      '@react-spring/three':
+        specifier: ^9.7.2
+        version: 9.7.2(@react-three/fiber@8.13.0)(react@18.2.0)(three@0.152.2)
       '@react-three/drei':
         specifier: ^9.66.6
         version: 9.66.6(@react-three/fiber@8.13.0)(@types/three@0.152.0)(react-dom@18.2.0)(react@18.2.0)(three@0.152.2)
@@ -3641,7 +3644,6 @@ packages:
       '@react-spring/shared': 9.7.2(react@18.2.0)
       '@react-spring/types': 9.7.2
       react: 18.2.0
-    dev: true
 
   /@react-spring/core@9.6.1(react@18.2.0):
     resolution: {integrity: sha512-3HAAinAyCPessyQNNXe5W0OHzRfa8Yo5P748paPcmMowZ/4sMfaZ2ZB6e5x5khQI8NusOHj8nquoutd6FRY5WQ==}
@@ -3664,7 +3666,6 @@ packages:
       '@react-spring/shared': 9.7.2(react@18.2.0)
       '@react-spring/types': 9.7.2
       react: 18.2.0
-    dev: true
 
   /@react-spring/konva@9.7.2(konva@9.0.2)(react-konva@18.2.8)(react@18.2.0):
     resolution: {integrity: sha512-xMA0XkIyv02euso8BGlLA4iXVJ76p6WCjABMTjdvcp//KvIub596vLwoLzmqHYjqRhH7BP4UQKxzhHvM7AylQA==}
@@ -3701,7 +3702,6 @@ packages:
 
   /@react-spring/rafz@9.7.2:
     resolution: {integrity: sha512-kDWMYDQto3+flkrX3vy6DU/l9pxQ4TVW91DglQEc11iDc7shF4+WVDRJvOVLX+xoMP7zyag1dMvlIgvQ+dvA/A==}
-    dev: true
 
   /@react-spring/shared@9.6.1(react@18.2.0):
     resolution: {integrity: sha512-PBFBXabxFEuF8enNLkVqMC9h5uLRBo6GQhRMQT/nRTnemVENimgRd+0ZT4yFnAQ0AxWNiJfX3qux+bW2LbG6Bw==}
@@ -3720,7 +3720,6 @@ packages:
       '@react-spring/rafz': 9.7.2
       '@react-spring/types': 9.7.2
       react: 18.2.0
-    dev: true
 
   /@react-spring/three@9.6.1(@react-three/fiber@8.13.0)(react@18.2.0)(three@0.152.2):
     resolution: {integrity: sha512-Tyw2YhZPKJAX3t2FcqvpLRb71CyTe1GvT3V+i+xJzfALgpk10uPGdGaQQ5Xrzmok1340DAeg2pR/MCfaW7b8AA==}
@@ -3751,14 +3750,12 @@ packages:
       '@react-three/fiber': 8.13.0(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)(three@0.152.2)
       react: 18.2.0
       three: 0.152.2
-    dev: true
 
   /@react-spring/types@9.6.1:
     resolution: {integrity: sha512-POu8Mk0hIU3lRXB3bGIGe4VHIwwDsQyoD1F394OK7STTiX9w4dG3cTLljjYswkQN+hDSHRrj4O36kuVa7KPU8Q==}
 
   /@react-spring/types@9.7.2:
     resolution: {integrity: sha512-GEflx2Ex/TKVMHq5g5MxQDNNPNhqg+4Db9m7+vGTm8ttZiyga7YQUF24shgRNebKIjahqCuei16SZga8h1pe4g==}
-    dev: true
 
   /@react-spring/web@9.7.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-7qNc7/5KShu2D05x7o2Ols2nUE7mCKfKLaY2Ix70xPMfTle1sZisoQMBFgV9w/fSLZlHZHV9P0uWJqEXQnbV4Q==}
