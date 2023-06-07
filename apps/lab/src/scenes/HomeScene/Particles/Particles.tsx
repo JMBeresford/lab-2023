@@ -5,13 +5,14 @@ import { randFloat } from "three/src/math/MathUtils";
 import particleMaskImg from "experiment-assets/images/particleMask.png?url";
 import { ParticlesMaterial, ParticlesMaterialProps } from "./shader";
 import { BufferAttribute, BufferGeometry, Points as PointsImpl } from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 
 const BOX_WIDTH = 10;
 
 export function Particles() {
   const ref = useRef<PointsImpl<BufferGeometry, ParticlesMaterialProps>>(undefined);
   const maskTex = useTexture(particleMaskImg);
+  const { dpr } = useThree((s) => s.viewport);
 
   const { count } = useControls({
     count: { value: 750, min: 500, max: 3000, step: 100 },
@@ -54,8 +55,8 @@ export function Particles() {
   });
 
   return (
-    <Points ref={ref} limit={count} range={count} positions={positions}>
-      <ParticlesMaterial uMask={maskTex} />
+    <Points ref={ref} limit={count} range={count} positions={positions} frustumCulled={false}>
+      <ParticlesMaterial uMask={maskTex} uDpr={dpr} />
     </Points>
   );
 }

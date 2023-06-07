@@ -1,4 +1,5 @@
 uniform float uTime;
+uniform float uDpr;
 
 attribute vec3 aPositionEnd;
 
@@ -17,6 +18,6 @@ void main() {
   vec4 modelViewPos = viewMatrix * modelPos;
 
   gl_Position = projectionMatrix * modelViewPos;
-  gl_PointSize = 35.0 / -modelViewPos.z;
+  gl_PointSize = uDpr * 35.0 / -modelViewPos.z;
   vPos = modelPos.xyz;
 }

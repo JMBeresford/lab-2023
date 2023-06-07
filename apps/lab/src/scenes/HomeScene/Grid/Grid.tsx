@@ -16,7 +16,7 @@ export function Grid() {
   });
 
   return (
-    <mesh ref={ref} rotation-x={-Math.PI / 2.15} scale={100}>
+    <mesh ref={ref} rotation-x={-Math.PI / 2} scale={100}>
       <planeGeometry args={[1, 1]} />
       <GridMaterial uColor={parseInt(color.slice(1, 7), 16)} />
     </mesh>

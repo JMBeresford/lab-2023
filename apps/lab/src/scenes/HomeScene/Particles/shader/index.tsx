@@ -7,11 +7,13 @@ import { MaterialNode, extend } from "@react-three/fiber";
 type Uniforms = {
   uTime?: number;
   uMask?: Texture;
+  uDpr?: number;
 };
 
 const uniforms: Uniforms = {
   uTime: 0,
   uMask: undefined,
+  uDpr: 1,
 };
 
 const BaseParticlesMaterial = shaderMaterial(uniforms, vertShader, fragShader, (m) => {

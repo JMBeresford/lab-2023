@@ -6,10 +6,6 @@ $mute-size: 1rem;
   z-index: 50;
 
   .content {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
-    // flex-basis: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
@@ -17,7 +13,7 @@ $mute-size: 1rem;
     min-height: 10vh;
     margin: 0 auto;
     width: 90%;
-    max-width: min(90%, 1500px);
+    max-width: min(90%, 1750px);
 
     .muteButton {
       justify-self: start;
@@ -111,5 +107,17 @@ $mute-size: 1rem;
 
   0% {
     transform: scaleY(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    .content {
+      grid-template-columns: 1fr;
+      .muteButton,
+      .portfolioLink {
+        display: none;
+      }
+    }
   }
 }

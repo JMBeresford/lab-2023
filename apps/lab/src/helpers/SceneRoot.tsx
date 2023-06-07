@@ -1,12 +1,13 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { SceneTunnel } from "./tunnel";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { ACESFilmicToneMapping } from "three";
 
 export function SceneRoot(props: { children: ReactNode }) {
   const ref = useRef();
+
   return (
     <div
       ref={ref}
@@ -14,7 +15,7 @@ export function SceneRoot(props: { children: ReactNode }) {
         position: "relative",
         width: "100%",
         height: "100%",
-        minHeight: "100vh",
+        minHeight: "100dvh",
         touchAction: "auto",
       }}
     >

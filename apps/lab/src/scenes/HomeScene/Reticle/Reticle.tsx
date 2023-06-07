@@ -1,6 +1,6 @@
-import { useFrame, useThree } from "@react-three/fiber";
+import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { ReticleMaterial, ReticleMaterialProps } from "./shader";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BufferGeometry, Mesh } from "three";
 import { damp } from "three/src/math/MathUtils";
 import { useLabStore } from "@/helpers/store";
@@ -11,21 +11,24 @@ export function Reticle() {
   const ref = useRef<Mesh<BufferGeometry, ReticleMaterialProps>>(undefined);
   const { width, height } = useThree((state) => state.size);
   const hovering = useLabStore((state) => state.hovering);
+  const mobile = useLabStore((state) => state.mobile);
 
   const baseTexture = useTexture("/reticle/base.png");
   const dashedTexture = useTexture("/reticle/dashed.png");
   const halfTexture = useTexture("/reticle/half.png");
+  const crosshairTexture = useTexture("/reticle/cross.png");
 
-  const { hovered } = useSpring({
+  const { hovered, visible } = useSpring({
     hovered: hovering ? 1 : 0,
+    visible: mobile ? 0 : 1,
   });
 
   useFrame(({ mouse, clock }, dt) => {
     const mx = ((mouse.x + 1.0) / 2) * width;
     const my = ((mouse.y + 1.0) / 2) * height;
 
-    const lambdaMouse = 8;
-    const lambdaInnerCluster = 5;
+    const lambdaMouse = 6;
+    const lambdaInnerCluster = 4;
 
     ref.current.material.uTime = clock.elapsedTime;
 
@@ -56,8 +59,22 @@ export function Reticle() {
     );
   });
 
+  useEffect(() => {
+    function handlePointerMove(e: PointerEvent) {
+      if (e.pointerType === "mouse" && useLabStore.getState().mobile) {
+        useLabStore.setState({ mobile: false });
+      }
+    }
+
+    document.body.addEventListener("pointermove", handlePointerMove);
+
+    return () => {
+      document.body.removeEventListener("pointermove", handlePointerMove);
+    };
+  }, []);
+
   return (
-    <mesh ref={ref} position-z={-1}>
+    <mesh ref={ref} position-z={-1} frustumCulled={false}>
       <planeGeometry args={[2, 2]} />
       <ReticleMaterial
         uResolution={[width, height]}
@@ -65,6 +82,8 @@ export function Reticle() {
         uReticleBase={baseTexture}
         uReticleDashed={dashedTexture}
         uReticleHalf={halfTexture}
+        uCrosshair={crosshairTexture}
+        uVisible={visible}
       />
     </mesh>
   );

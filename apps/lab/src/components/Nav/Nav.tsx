@@ -16,20 +16,18 @@ export function Nav() {
   const path = usePathname();
   const parts = useMemo(() => path.split("/").filter((x) => x !== ""), [path]);
 
-  console.log(path, parts);
-
   return (
     <nav className={styles.nav}>
       <div className={`${styles.content} ${exo.className}`}>
         <MuteButton />
 
         <div className={styles.path}>
-          <Link href="/" {...hoverHandlers}>
+          <Link href="/">
             home
             <div className={styles.slash}>/</div>
           </Link>
           {parts.map((part, i) => (
-            <Link key={i} href={parts.slice(0, i + 1).join("/")} {...hoverHandlers}>
+            <Link key={i} href={parts.slice(0, i + 1).join("/")}>
               {part}
               <div className={styles.slash}>/</div>
             </Link>

@@ -1,0 +1,99 @@
+.experiments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
+
+  h1 {
+    background-image: linear-gradient(-45deg, rgb(135, 65, 255), rgb(220, 115, 255));
+    background-size: 100%;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-size: clamp(6rem, 5vw + 6rem, 20rem);
+    letter-spacing: 0.25rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+
+    .listEntry {
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+      list-style: none;
+      font-size: clamp(3.5rem, 2vw + 2.5rem, 5rem);
+      border-bottom: solid 2px white;
+      margin-bottom: 1rem;
+
+      opacity: 0.6;
+      transition: opacity 0.25s ease-in-out;
+
+      animation: fade-in 0.5s ease-in-out backwards;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      p {
+        font-size: 1.1rem;
+        opacity: 0.5;
+        align-self: flex-start;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade-in-mobile {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .experiments {
+    align-items: center;
+
+    h1 {
+      font-size: clamp(4rem, 5vw + 2rem, 15rem);
+    }
+
+    .list {
+      .listEntry {
+        font-size: clamp(2rem, 2vw + 1.5rem, 5rem);
+
+        opacity: 1;
+        animation-name: fade-in-mobile;
+
+        &:nth-child(even) {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    scrollbar-width: 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   overflow: visible;
@@ -16,7 +21,8 @@
 }
 
 .layout {
-  min-height: 100vh;
   display: flex;
+  height: 100%;
+  min-height: 100dvh;
   flex-direction: column;
 }

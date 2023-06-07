@@ -2,14 +2,14 @@ import chaosSphereImg from "./images/chaossphere.png";
 import { StaticImageData } from "next/image";
 
 const experiments = [
-  "chaos-sphere",
-  "cosmic-platform",
+  "metaballs",
   "work-from-home",
-  "extra-dimensional-input-form",
-  "oceanic-horizon",
   "s-rank-jutsu",
   "skywalker",
-  "metaballs",
+  "chaos-sphere",
+  "cosmic-platform",
+  "oceanic-horizon",
+  "extra-dimensional-input-form",
 ] as const;
 
 export type Experiment = typeof experiments[number];
@@ -22,31 +22,15 @@ export type ExperimentDatum = {
 };
 
 export const ExperimentData: Record<Experiment, ExperimentDatum> = {
-  "chaos-sphere": {
-    name: "chaos-sphere",
-    label: "Chaos Sphere",
-    pathName: "ChaosSphere",
-    image: chaosSphereImg,
-  },
-  "cosmic-platform": {
-    name: "cosmic-platform",
-    label: "Cosmic Platform",
-    pathName: "CosmicPlatform",
+  metaballs: {
+    name: "metaballs",
+    label: "Metaballs",
+    pathName: "Metaballs",
   },
   "work-from-home": {
     name: "work-from-home",
     label: "Work From Home",
     pathName: "WorkFromHome",
-  },
-  "extra-dimensional-input-form": {
-    name: "extra-dimensional-input-form",
-    label: "Extra Dimensional Input Form",
-    pathName: "ExtraDimensionalInputForm",
-  },
-  "oceanic-horizon": {
-    name: "oceanic-horizon",
-    label: "Oceanic Horizon",
-    pathName: "OceanicHorizon",
   },
   "s-rank-jutsu": {
     name: "s-rank-jutsu",
@@ -58,9 +42,25 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     label: "Skywalker",
     pathName: "Skywalker",
   },
-  metaballs: {
-    name: "metaballs",
-    label: "Metaballs",
-    pathName: "Metaballs",
+  "chaos-sphere": {
+    name: "chaos-sphere",
+    label: "Chaos Sphere",
+    pathName: "ChaosSphere",
+    image: chaosSphereImg,
+  },
+  "cosmic-platform": {
+    name: "cosmic-platform",
+    label: "Cosmic Platform",
+    pathName: "CosmicPlatform",
+  },
+  "oceanic-horizon": {
+    name: "oceanic-horizon",
+    label: "Oceanic Horizon",
+    pathName: "OceanicHorizon",
+  },
+  "extra-dimensional-input-form": {
+    name: "extra-dimensional-input-form",
+    label: "Extra Dimensional Input Form",
+    pathName: "ExtraDimensionalInputForm",
   },
 };
