@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.7.2",
+    "@react-spring/web": "^9.7.2",
     "@react-three/drei": "^9.66.6",
     "@react-three/fiber": "^8.13.0",
     "@react-three/postprocessing": "^2.11.0",
@@ -22,6 +23,7 @@
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
+    "gsap": "^3.11.5",
     "leva": "^0.9.34",
     "metaballs": "workspace:*",
     "next": "^13.4.1",

@@ -1,7 +1,5 @@
 import Link from "next/link";
 import styles from "./page.module.scss";
-import { HomeScene } from "@/scenes/HomeScene";
-import { ScenePortal } from "@/helpers/ScenePortal";
 import { Button } from "@/components/Button";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { PageWrapper } from "@/components/PageWrapper";
@@ -31,10 +29,6 @@ export default function Page() {
             VIEW EXPERIMENTS
           </Link>
         </Button>
-
-        <ScenePortal>
-          <HomeScene />
-        </ScenePortal>
       </div>
     </PageWrapper>
   );

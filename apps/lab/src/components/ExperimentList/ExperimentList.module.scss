@@ -23,6 +23,7 @@
     gap: 0.85rem;
 
     .listEntry {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 0.1rem;
@@ -30,6 +31,7 @@
       font-size: clamp(3.5rem, 2vw + 2.5rem, 5rem);
       border-bottom: solid 2px white;
       margin-bottom: 1rem;
+      cursor: pointer;
 
       opacity: 0.6;
       transition: opacity 0.25s ease-in-out;
@@ -52,6 +54,23 @@
 
       a {
         text-decoration: none;
+      }
+
+      p,
+      a {
+        z-index: 5;
+      }
+
+      .previewImg {
+        z-index: 1;
+        left: 0;
+        top: 0;
+        position: fixed;
+        pointer-events: none;
+        touch-action: none;
+        max-width: 256px;
+
+        transition: transform 0.1s linear;
       }
     }
   }

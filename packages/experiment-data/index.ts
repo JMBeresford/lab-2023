@@ -1,5 +1,9 @@
-import chaosSphereImg from "./images/chaossphere.png";
-import { StaticImageData } from "next/image";
+import chaossphereImg from "./images/chaossphere.png";
+import metaballsImg from "./images/metaballs.png";
+import cosmicplatformImg from "./images/cosmicplatform.png";
+import skywalkerImg from "./images/skywalker.png";
+import srankjutsuImg from "./images/srankjutsu.png";
+import workfromhomeImg from "./images/workfromhome.png";
 
 const experiments = [
   "metaballs",
@@ -18,7 +22,7 @@ export type ExperimentDatum = {
   name: string;
   label: string;
   pathName: string;
-  image?: StaticImageData;
+  image?: string;
 };
 
 export const ExperimentData: Record<Experiment, ExperimentDatum> = {
@@ -26,32 +30,37 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "metaballs",
     label: "Metaballs",
     pathName: "Metaballs",
+    image: metaballsImg,
   },
   "work-from-home": {
     name: "work-from-home",
     label: "Work From Home",
     pathName: "WorkFromHome",
+    image: workfromhomeImg,
   },
   "s-rank-jutsu": {
     name: "s-rank-jutsu",
     label: "S-Rank Jutsu",
     pathName: "SRankJutsu",
+    image: srankjutsuImg,
   },
   skywalker: {
     name: "skywalker",
     label: "Skywalker",
     pathName: "Skywalker",
+    image: skywalkerImg,
   },
   "chaos-sphere": {
     name: "chaos-sphere",
     label: "Chaos Sphere",
     pathName: "ChaosSphere",
-    image: chaosSphereImg,
+    image: chaossphereImg,
   },
   "cosmic-platform": {
     name: "cosmic-platform",
     label: "Cosmic Platform",
     pathName: "CosmicPlatform",
+    image: cosmicplatformImg,
   },
   "oceanic-horizon": {
     name: "oceanic-horizon",
