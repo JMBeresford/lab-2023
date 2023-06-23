@@ -1,9 +1,9 @@
-import chaossphereImg from "./images/chaossphere.png";
-import metaballsImg from "./images/metaballs.png";
-import cosmicplatformImg from "./images/cosmicplatform.png";
-import skywalkerImg from "./images/skywalker.png";
-import srankjutsuImg from "./images/srankjutsu.png";
-import workfromhomeImg from "./images/workfromhome.png";
+import chaossphereImg from "./images/chaossphere.png?url";
+import metaballsImg from "./images/metaballs.png?url";
+import cosmicplatformImg from "./images/cosmicplatform.png?url";
+import skywalkerImg from "./images/skywalker.png?url";
+import srankjutsuImg from "./images/srankjutsu.png?url";
+import workfromhomeImg from "./images/workfromhome.png?url";
 
 const experiments = [
   "metaballs",

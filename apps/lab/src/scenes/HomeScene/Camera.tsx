@@ -45,7 +45,7 @@ export function Camera() {
       groupRef.current.position.set(rig.position.x, rig.position.y, rig.position.z);
       groupRef.current.rotation.set(rig.rotation.x, rig.rotation.y, rig.rotation.z);
     }
-  }, []);
+  }, [path]);
 
   useFrame(({ mouse }, dt) => {
     const x = mouse.x * 0.1;
