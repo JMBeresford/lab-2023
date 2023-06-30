@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, Suspense, forwardRef, useImperativeHandle, useRef } from "react";
+import { ReactNode, Suspense } from "react";
 import { SceneTunnel } from "./tunnel";
 import { usePathname } from "next/navigation";
 

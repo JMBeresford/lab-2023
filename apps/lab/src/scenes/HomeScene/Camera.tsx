@@ -1,7 +1,7 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Euler, Group, PerspectiveCamera as PerspectiveCameraProps, Vector3 } from "three";
 import { damp } from "three/src/math/MathUtils";
 
@@ -30,6 +30,7 @@ export function Camera() {
   const ref = useRef<PerspectiveCameraProps>(undefined);
   const path = usePathname();
   const size = useThree((state) => state.size);
+  const [rig, setRig] = useState<Rig>(undefined);
 
   useEffect(() => {
     if (size.width <= 768) {
@@ -40,19 +41,22 @@ export function Camera() {
   }, [size]);
 
   useEffect(() => {
-    let rig = Rigs[path];
-    if (rig != undefined) {
-      groupRef.current.position.set(rig.position.x, rig.position.y, rig.position.z);
-      groupRef.current.rotation.set(rig.rotation.x, rig.rotation.y, rig.rotation.z);
+    let newRig = Rigs[path];
+    if (rig == undefined) {
+      groupRef.current.position.set(newRig.position.x, newRig.position.y, newRig.position.z);
+      groupRef.current.rotation.set(newRig.rotation.x, newRig.rotation.y, newRig.rotation.z);
     }
-  }, [path]);
+    setRig(newRig);
+  }, [path, rig]);
 
   useFrame(({ mouse }, dt) => {
+    if (!rig) return;
+
     const x = mouse.x * 0.1;
     const y = mouse.y * 0.1;
 
-    const position = Rigs[path].position;
-    const rotation = Rigs[path].rotation;
+    const position = rig.position;
+    const rotation = rig.rotation;
     const lambda = 2;
 
     if (position && rotation) {
