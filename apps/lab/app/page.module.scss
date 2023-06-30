@@ -5,9 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 10dvh;
 
   .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 
     background-image: linear-gradient(-45deg, rgb(135, 65, 255), rgb(220, 115, 255));
@@ -18,11 +21,33 @@
     -moz-text-fill-color: transparent;
 
     h3 {
-      font-size: clamp(2.5rem, 2vw + 1rem, 3rem);
+      font-size: clamp(2rem, 1vw + 1rem, 3rem);
     }
 
     h1 {
-      font-size: clamp(5rem, 5vw + 3.5rem, 15rem);
+      font-size: clamp(5rem, 7vw + 3.5rem, 15rem);
+      line-height: 1;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      width: 80%;
+      margin-bottom: 1rem;
+
+      background-image: linear-gradient(-45deg, rgb(135, 65, 255), rgb(220, 115, 255));
+      background-size: 100%;
+    }
+
+    .subHeadline {
+      display: flex;
+      gap: 1rem;
+
+      h5 {
+        font-size: clamp(1rem, 0.5vw + 1rem, 1.5rem);
+        text-transform: uppercase;
+        font-weight: 400;
+      }
     }
   }
 }

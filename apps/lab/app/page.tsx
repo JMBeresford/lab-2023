@@ -22,6 +22,15 @@ export default function Page() {
         <div className={`${styles.text} ${bebasNeue.className}`}>
           <h3>John Beresford&apos;s</h3>
           <h1>Laboratory</h1>
+          <hr />
+
+          <div className={styles.subHeadline}>
+            <h5>Graphics</h5>
+            <h5>•</h5>
+            <h5>Web</h5>
+            <h5>•</h5>
+            <h5>Design</h5>
+          </div>
         </div>
 
         <Button>
