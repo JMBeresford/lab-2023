@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import { Reticle } from "./Reticle";
 import { Music } from "./Music";
 import { usePathname } from "next/navigation";
+import { HoverSound } from "./HoverSound";
 
 export function HomeScene() {
   const path = usePathname();
@@ -17,6 +18,7 @@ export function HomeScene() {
     <>
       <Suspense fallback={null}>
         <Music />
+        <HoverSound />
       </Suspense>
 
       {[`/`, `/experiments`].includes(path) && (
