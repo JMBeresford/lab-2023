@@ -4,6 +4,7 @@ const name = "John Beresford";
 const title = "John Beresford: Lab";
 const url = "https://lab.john-beresford.com";
 const description = "Byte-sized computer graphics and web experiments created by John Beresford.";
+const imageUrl = "https://lab.john-beresford.com/og-image.jpg";
 
 export const defaultMetadata: Metadata = {
   title,
@@ -15,7 +16,7 @@ export const defaultMetadata: Metadata = {
     url,
     title,
     description,
-    images: ["https://lab.john-beresford.com/og-image.jpg"],
+    images: [imageUrl],
     siteName: title,
   },
   twitter: {
@@ -23,5 +24,6 @@ export const defaultMetadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
+    images: [imageUrl],
   },
 };
