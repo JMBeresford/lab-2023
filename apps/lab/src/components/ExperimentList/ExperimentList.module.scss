@@ -44,6 +44,7 @@
 
       &:nth-child(even) {
         flex-direction: row-reverse;
+        text-align: right;
       }
 
       p {
@@ -54,6 +55,7 @@
 
       a {
         text-decoration: none;
+        width: 100%;
       }
 
       p,
@@ -112,6 +114,7 @@
 
         &:nth-child(even) {
           flex-direction: row;
+          text-align: left;
         }
 
         .previewImg {

@@ -33,7 +33,7 @@
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: clamp(2rem, 2vw + 1.5rem, 5rem);
     max-width: 80%;
     text-transform: uppercase;
   }
@@ -63,6 +63,7 @@
 
     button.primary {
       background-color: rgb(50, 211, 255);
+      color: black;
       border: none;
       width: fit-content;
       padding: 0.5rem 1rem;
