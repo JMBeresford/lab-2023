@@ -6,11 +6,13 @@ import { Suspense } from "react";
 import { ScenePortal } from "@/helpers/ScenePortal";
 import { HomeScene } from "@/scenes/HomeScene";
 import { LoadScreen } from "@/components/LoadScreen";
+import { Analytics } from "@/utils/ga";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={styles.body}>
+        <Analytics />
         <SceneRoot>
           <Suspense fallback={null}>
             <LoadScreen />
