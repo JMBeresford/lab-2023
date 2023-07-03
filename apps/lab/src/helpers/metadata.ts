@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 const name = "John Beresford";
-const title = "John Beresford: Lab";
+const title = "Lab - John Beresford";
 const url = "https://lab.john-beresford.com";
 const description = "Byte-sized computer graphics and web experiments created by John Beresford.";
 const imageUrl = "https://lab.john-beresford.com/og-image.jpg";
