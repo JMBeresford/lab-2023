@@ -3,6 +3,7 @@ import styles from "./page.module.scss";
 import { Button } from "@/components/Button";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { PageWrapper } from "@/components/PageWrapper";
+import { defaultMetadata } from "@/helpers/metadata";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -42,3 +43,5 @@ export default function Page() {
     </PageWrapper>
   );
 }
+
+export const metadata = defaultMetadata;

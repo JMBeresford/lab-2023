@@ -1,15 +1,12 @@
-"use client";
+import { defaultMetadata } from "@/helpers/metadata";
+import { Metadata } from "next";
+import { Experiment } from "./Experiment";
 
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-const Experiment = dynamic(() => import("work-from-home").then((mod) => mod.Experiment), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  ...defaultMetadata,
+  title: `Work From Home - ${defaultMetadata.title}`,
+};
 
 export default function Page() {
-  return (
-    <Suspense fallback={null}>
-      <Experiment />
-    </Suspense>
-  );
+  return <Experiment />;
 }

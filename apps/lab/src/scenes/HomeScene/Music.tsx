@@ -31,8 +31,7 @@ export function Music(props: Props) {
 
   useLayoutEffect(() => {
     if (entered && !ref.current.isPlaying) {
-      // ref.current.setVolume(1);
-      ref.current.gain.gain.setValueAtTime(0, ref.current.context.currentTime);
+      ref.current.gain.gain.value = 0;
 
       ref.current.play(startTime ?? 0);
     }
