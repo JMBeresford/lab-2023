@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   reactStrictMode: true,
   transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
@@ -21,8 +23,6 @@ module.exports = {
       ],
     });
 
-    console.log(config.exclude);
-
     // shader support
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
@@ -33,7 +33,8 @@ module.exports = {
     // override next-image-loader
     config.module.rules = config.module.rules.filter((rule) => rule.loader !== "next-image-loader");
     config.module.rules.push({
-      test: /\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i,
+      test: /\.(png|jpg|jpeg|gif|webp|avif|bmp|svg)$/i,
+      include: [{ not: path.resolve(__dirname, "app/apple-icon.png") }],
       loader: "url-loader",
       options: {
         resourceQuery: [/url/],
@@ -42,25 +43,6 @@ module.exports = {
         esModule: config.esModule || false,
       },
     });
-
-    // catch vite url-loader overrides, and use file-loader
-    // to remove the added suffix then feed it to url-loader
-    // config.module.rules.push({
-    //   test: /\?url$/i,
-    //   use: [
-    //     {
-    //       loader: "file-loader",
-    //       options: {
-    //         name: (resourcePath, resourceQuery) => {
-    //           const name = resourcePath.replace(/\?url$/i, "");
-
-    //           return name;
-    //         },
-    //       },
-    //     },
-    //     { loader: "url-loader" },
-    //   ],
-    // });
 
     return config;
   },
