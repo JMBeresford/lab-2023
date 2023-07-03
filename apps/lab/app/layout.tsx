@@ -5,16 +5,20 @@ import { Debug } from "@/components/Debug";
 import { Suspense } from "react";
 import { ScenePortal } from "@/helpers/ScenePortal";
 import { HomeScene } from "@/scenes/HomeScene";
+import { LoadScreen } from "@/components/LoadScreen";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={styles.body}>
         <SceneRoot>
-          <div className={styles.layout}>
-            <Nav />
-            {children}
-          </div>
+          <Suspense fallback={null}>
+            <LoadScreen />
+            <div className={styles.layout}>
+              <Nav />
+              {children}
+            </div>
+          </Suspense>
         </SceneRoot>
 
         <ScenePortal>

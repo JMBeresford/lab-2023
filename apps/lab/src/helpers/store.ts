@@ -2,6 +2,7 @@ import { Experiment } from "experiment-data";
 import { create } from "zustand";
 
 type LabStore = {
+  entered: boolean;
   mobile: boolean;
   hovering: boolean;
   muted: boolean;
@@ -9,8 +10,9 @@ type LabStore = {
 };
 
 export const useLabStore = create<LabStore>()(() => ({
+  entered: false,
   mobile: true,
   hovering: false,
-  muted: false,
+  muted: true,
   hoveredExperiment: "chaos-sphere",
 }));

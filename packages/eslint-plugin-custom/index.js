@@ -1,17 +1,24 @@
 const common = {
   plugins: ["custom"],
-  parserOptions: {
-    babelOptions: {
-      presets: [require.resolve("next/babel")],
-    },
-  },
 };
 
 module.exports = {
   configs: {
     next: {
       ...common,
-      extends: ["next", "turbo", "prettier"],
+      extends: [
+        "next",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
+        "turbo",
+        "prettier",
+      ],
+      parserOptions: {
+        babelOptions: {
+          presets: [require.resolve("next/babel")],
+        },
+      },
       rules: {
         "@next/next/no-html-link-for-pages": "off",
       },

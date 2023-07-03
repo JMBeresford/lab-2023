@@ -1,11 +1,19 @@
 $corner-length: calc(100% - 15px);
-$corner-displacement: 7.5px;
+$corner-displacement: 15px;
+$start-displacement: calc($corner-displacement / 2);
 
 .outer {
   &::after,
   &::before {
-    transform: translate(0, 0);
     transition: transform 0.15s ease-in;
+  }
+
+  &::after {
+    transform: translate(-$start-displacement, -$start-displacement);
+  }
+
+  &::before {
+    transform: translate($start-displacement, $start-displacement);
   }
 
   &:hover::after {
@@ -23,7 +31,7 @@ $corner-displacement: 7.5px;
       content: "";
       position: absolute;
       inset: 0;
-      border: 2px solid;
+      border: 2px solid rgb(50, 211, 255);
 
       clip-path: inset(0 $corner-length $corner-length 0);
     }
@@ -32,7 +40,7 @@ $corner-displacement: 7.5px;
       content: "";
       position: absolute;
       inset: 0;
-      border: 2px solid;
+      border: 2px solid rgb(50, 211, 255);
 
       clip-path: inset($corner-length 0 0 $corner-length);
     }
@@ -41,7 +49,7 @@ $corner-displacement: 7.5px;
   .inner {
     &::after,
     &::before {
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(50, 211, 255, 0.5);
     }
 
     width: 100%;
@@ -50,19 +58,25 @@ $corner-displacement: 7.5px;
 
   .button {
     position: relative;
-    color: white;
-    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    background-color: rgb(50, 211, 255);
     width: max-content;
 
     display: grid;
     place-items: center;
+
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: rgb(50, 166, 255);
+    }
 
     a {
       display: block;
       color: inherit;
       text-decoration: none;
 
-      padding: 1rem 2rem;
+      padding: 0.5rem 1.2rem;
       width: max-content;
     }
   }

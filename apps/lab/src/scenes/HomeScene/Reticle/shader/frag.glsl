@@ -39,11 +39,11 @@ float getCluster() {
   vec2 dashedSt = getReticleSt(uMouse) * rotate2d(uTime * 0.5) * dashedRadius + 0.5;
   float dashed = texture2D(uReticleDashed, dashedSt).r * uHovered;
 
-  float halfRadius = 1.0 - 0.45 * uHovered;
-  vec2 halfSt = getReticleSt(uMouse) * rotate2d(-uTime * 0.75) * halfRadius + 0.5;
-  float halfCircle = texture2D(uReticleHalf, halfSt).r * uHovered;
+  // float halfRadius = 1.0 - 0.45 * uHovered;
+  // vec2 halfSt = getReticleSt(uMouse) * rotate2d(-uTime * 0.75) * halfRadius + 0.5;
+  // float halfCircle = texture2D(uReticleHalf, halfSt).r * uHovered;
 
-  float cluster = base + dashed + halfCircle;
+  float cluster = base + dashed;// + halfCircle;
 
   return clamp(cluster, 0.0, 1.0);
 }

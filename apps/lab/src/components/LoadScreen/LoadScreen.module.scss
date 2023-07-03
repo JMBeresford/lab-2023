@@ -1,0 +1,92 @@
+.loadScreen {
+  z-index: 100;
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 1;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+
+  pointer-events: all;
+  touch-action: all;
+
+  transition: opacity 0.5s ease-in-out;
+
+  &.entered {
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  &.loaded {
+    hr {
+      opacity: 0;
+    }
+    .buttons {
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    font-size: 5rem;
+    max-width: 80%;
+    text-transform: uppercase;
+  }
+
+  hr {
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+  }
+
+  hr,
+  .buttons {
+    transition: opacity 0.5s ease-in-out 0.25s;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transition-delay: 0.5s;
+
+    button {
+      cursor: pointer;
+    }
+
+    button.primary {
+      background-color: rgb(50, 211, 255);
+      border: none;
+      width: fit-content;
+      padding: 0.5rem 1rem;
+
+      transition: background-color 0.25s ease-in-out;
+
+      &:hover {
+        background-color: rgb(50, 166, 255);
+      }
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    button:not(.primary) {
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      color: rgba(255, 255, 255, 1);
+      font-family: inherit;
+      font-size: inherit;
+
+      text-decoration: underline;
+    }
+  }
+}

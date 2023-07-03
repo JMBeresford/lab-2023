@@ -7,21 +7,33 @@ import { Grid } from "./Grid";
 import { Particles } from "./Particles";
 import { Suspense } from "react";
 import { Reticle } from "./Reticle";
+import { Music } from "./Music";
+import { usePathname } from "next/navigation";
 
 export function HomeScene() {
+  const path = usePathname();
+
   return (
     <>
-      <Sky />
-      <Particles />
-      <Grid />
-      <Reticle />
-      <Camera />
-
       <Suspense fallback={null}>
-        <EffectComposer disableNormalPass multisampling={0}>
-          <SMAA />
-        </EffectComposer>
+        <Music />
       </Suspense>
+
+      {[`/`, `/experiments`].includes(path) && (
+        <>
+          <Sky />
+          <Particles />
+          <Grid />
+          <Reticle />
+          <Camera />
+
+          <Suspense fallback={null}>
+            <EffectComposer disableNormalPass multisampling={0}>
+              <SMAA />
+            </EffectComposer>
+          </Suspense>
+        </>
+      )}
     </>
   );
 }

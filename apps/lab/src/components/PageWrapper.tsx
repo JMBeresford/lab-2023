@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 export function PageWrapper(props: { children: ReactNode }) {
   return (

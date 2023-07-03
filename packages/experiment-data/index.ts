@@ -4,6 +4,8 @@ import cosmicplatformImg from "./images/cosmicplatform.png?url";
 import skywalkerImg from "./images/skywalker.png?url";
 import srankjutsuImg from "./images/srankjutsu.png?url";
 import workfromhomeImg from "./images/workfromhome.png?url";
+import oceanichorizonImg from "./images/oceanichorizon.png?url";
+import extradimensionalinputformImg from "./images/extradimensionalinputform.png?url";
 
 const experiments = [
   "metaballs",
@@ -66,10 +68,12 @@ export const ExperimentData: Record<Experiment, ExperimentDatum> = {
     name: "oceanic-horizon",
     label: "Oceanic Horizon",
     pathName: "OceanicHorizon",
+    image: oceanichorizonImg,
   },
   "extra-dimensional-input-form": {
     name: "extra-dimensional-input-form",
     label: "Extra Dimensional Input Form",
     pathName: "ExtraDimensionalInputForm",
+    image: extradimensionalinputformImg,
   },
 };
