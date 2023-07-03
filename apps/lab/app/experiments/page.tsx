@@ -13,5 +13,5 @@ export default function Page() {
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `Experiments - ${defaultMetadata.title}`,
+  title: `Experiments | ${defaultMetadata.title}`,
 };

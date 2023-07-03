@@ -4,7 +4,7 @@ import { Experiment } from "./Experiment";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `Work From Home - ${defaultMetadata.title}`,
+  title: `Work From Home | ${defaultMetadata.title}`,
 };
 
 export default function Page() {

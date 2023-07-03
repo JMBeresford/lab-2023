@@ -4,7 +4,7 @@ import { Experiment } from "./Experiment";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `Cosmic Platform - ${defaultMetadata.title}`,
+  title: `Cosmic Platform | ${defaultMetadata.title}`,
 };
 
 export default function Page() {

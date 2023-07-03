@@ -4,7 +4,7 @@ import { Experiment } from "./Experiment";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  title: `Chaos Sphere - ${defaultMetadata.title}`,
+  title: `Chaos Sphere | ${defaultMetadata.title}`,
 };
 
 export default function Page() {
