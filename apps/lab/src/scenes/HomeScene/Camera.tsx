@@ -41,7 +41,7 @@ export function Camera() {
   }, [size]);
 
   useEffect(() => {
-    let newRig = Rigs[path];
+    const newRig = Rigs[path];
     if (rig == undefined && newRig != undefined) {
       groupRef.current.position.set(newRig.position.x, newRig.position.y, newRig.position.z);
       groupRef.current.rotation.set(newRig.rotation.x, newRig.rotation.y, newRig.rotation.z);
