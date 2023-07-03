@@ -15,7 +15,7 @@ export const defaultMetadata: Metadata = {
     url,
     title,
     description,
-    images: ["https://lab.john-beresford.com/images/og-image.png"],
+    images: ["https://lab.john-beresford.com/og-image.png"],
     siteName: title,
   },
   twitter: {
