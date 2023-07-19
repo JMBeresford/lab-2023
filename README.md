@@ -7,4 +7,4 @@ using [vite](https://vitejs.dev/guide/). That build is then used and hosted in t
 
 You can find the source for the experiments in the `/experiments` directory.
 
-The live website is available at `*STILL A WIP*`
+The live website is available at https://lab.john-beresford.com
