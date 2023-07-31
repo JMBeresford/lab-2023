@@ -377,7 +377,7 @@ export function Menu() {
   return (
     <div
       style={{
-        position: "fixed",
+        position: "absolute",
         zIndex: 100,
         inset: 0,
         backgroundColor: context === "customize" ? "rgba(0,0,0,0)" : "rgba(0,0,0,0.85)",

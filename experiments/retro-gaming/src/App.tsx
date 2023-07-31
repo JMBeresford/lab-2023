@@ -8,7 +8,7 @@ import { Header } from "./components/Header";
 export function Experiment() {
   return (
     <KeyboardControls>
-      <div style={{ height: "100dvh", width: "100dvw" }}>
+      <div style={{ height: "100%", width: "100%", position: "relative" }}>
         <Header />
         <Menu />
         <Scene />

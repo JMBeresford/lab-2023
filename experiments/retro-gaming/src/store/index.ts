@@ -140,7 +140,7 @@ export const useStore = create<Store>()(
       },
       {
         name: "jberesford-retro-gaming",
-        version: 17,
+        version: 18,
         partialize: (state) =>
           Object.fromEntries(
             Object.entries(state).filter(([key]) =>
