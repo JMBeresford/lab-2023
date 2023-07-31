@@ -6,7 +6,7 @@ const canvas = document.createElement("canvas");
 canvas.width = 160 * SCALE;
 canvas.height = 144 * SCALE;
 
-await WasmBoy.config(
+WasmBoy.config(
   {
     isAudioEnabled: true,
     gameboyFrameRate: 60,
@@ -14,8 +14,6 @@ await WasmBoy.config(
   },
   canvas,
 );
-
-await WasmBoy.disableDefaultJoypad();
 
 export const Emulator = WasmBoy;
 export type Emulator = typeof WasmBoy;
