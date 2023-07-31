@@ -2,11 +2,17 @@ const path = require("path");
 
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
+  transpilePackages: [
+    "ui",
+    "@react-three/postprocessing",
+    "postprocessing",
+    "cosmic-platform",
+    "retro-gaming",
+  ],
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
-      test: /\.(ogg|mp3|wav|mpe?g|ttf|hdr|glb|gltf)$/i,
+      test: /\.(ogg|mp3|wav|mpe?g|ttf|hdr|glb|gltf|gb)$/i,
       exclude: config.exclude,
       use: [
         {
