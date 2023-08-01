@@ -5,6 +5,11 @@ declare module "*.glsl" {
   export default value;
 }
 
+declare module "*.module.scss" {
+  const classes: { [key: string]: string };
+  export default classes;
+}
+
 declare module "wasmboy" {
   type WasmBoyOptions = {
     headless: boolean;

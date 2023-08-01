@@ -1,0 +1,9 @@
+@import "/src/fonts";
+
+.header {
+  font-family: $font-family;
+
+  h1 {
+    font-family: $font-family-large;
+  }
+}

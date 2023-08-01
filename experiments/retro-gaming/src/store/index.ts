@@ -13,11 +13,13 @@ type Actions = {
   setMuted: (muted: boolean) => void;
   setAudioCallback: () => Promise<void>;
   setOnFrameFinished: (callback: (imgData: Uint8ClampedArray) => void) => Promise<void>;
+  backHome: (ctx?: Store["uiContext"]) => void;
 };
 
 export type Store = {
   readonly emulator: Emulator;
   menuOpen: boolean;
+  aboutOpen: boolean;
   colors: {
     shell: string;
     buttons: string;
@@ -50,6 +52,7 @@ export const useStore = create<Store>()(
         return {
           emulator: Emulator,
           menuOpen: false,
+          aboutOpen: false,
           colors: {
             shell: "#5E629C",
             buttons: "#B94C1D",
@@ -135,6 +138,15 @@ export const useStore = create<Store>()(
             if (uiContext !== "paused" || !emu.isPaused()) return;
             await emu.play();
             _set({ uiContext: "game" });
+          },
+          backHome: (ctx?: Store["uiContext"]) => {
+            const { emulator: emu } = _get();
+            if (emu.isPlaying()) emu.pause();
+
+            if (ctx != undefined) {
+              _set({ uiContext: ctx });
+            }
+            _set({ menuOpen: false, aboutOpen: false });
           },
         };
       },

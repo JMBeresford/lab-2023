@@ -1,0 +1,13 @@
+@import "/src/fonts";
+
+.about {
+  font-family: $font-family;
+
+  h1 {
+    font-family: $font-family-large;
+  }
+
+  h3 {
+    font-size: 1.85rem;
+  }
+}

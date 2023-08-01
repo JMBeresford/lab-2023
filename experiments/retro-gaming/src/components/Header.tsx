@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../store";
+import styles from "./Header.module.scss";
 
 function hexToBrightness(hex: string) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -31,6 +32,9 @@ function Button(props: JSX.IntrinsicElements["h3"]) {
 
 export function Header() {
   const menuOpen = useStore((s) => s.menuOpen);
+  const aboutOpen = useStore((s) => s.aboutOpen);
+  const uiOpen = menuOpen || aboutOpen;
+  const backHome = useStore((s) => s.backHome);
   const pauseGame = useStore((s) => s.pauseGame);
   const uiContext = useStore((s) => s.uiContext);
   const colors = useStore((s) => s.colors);
@@ -39,6 +43,7 @@ export function Header() {
 
   return (
     <div
+      className={styles.header}
       style={{
         position: "absolute",
         top: 0,
@@ -46,9 +51,9 @@ export function Header() {
         width: "100dvw",
         display: "grid",
         placeItems: "center",
-        opacity: menuOpen ? 0 : 1,
-        pointerEvents: menuOpen ? "none" : "all",
-        touchAction: menuOpen ? "none" : "auto",
+        opacity: uiOpen ? 0 : 1,
+        pointerEvents: uiOpen ? "none" : "all",
+        touchAction: uiOpen ? "none" : "auto",
         zIndex: 99,
         transition: "opacity 0.5s ease-in-out",
       }}
@@ -63,11 +68,17 @@ export function Header() {
           color: textColor,
         }}
       >
-        <h1>retro gaming</h1>
+        <h1
+          style={{ cursor: "pointer" }}
+          onClick={() => backHome(uiContext === "game" ? "paused" : undefined)}
+        >
+          retro gaming
+        </h1>
 
         <div style={{ display: "flex", gap: "2rem" }}>
-          {uiContext === "game" && <Button onClick={async () => await pauseGame()}>pause</Button>}
+          {uiContext === "game" && <Button onClick={async () => await pauseGame()}>back</Button>}
           <Button onClick={() => useStore.setState({ menuOpen: true })}>menu</Button>
+          <Button onClick={() => useStore.setState({ aboutOpen: true })}>about</Button>
         </div>
       </nav>
     </div>

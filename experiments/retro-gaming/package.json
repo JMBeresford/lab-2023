@@ -66,6 +66,7 @@
     "gameboy-emulator": "^1.1.2",
     "gsap": "^3.11.5",
     "localforage": "^1.10.0",
+    "sass": "^1.62.1",
     "three-stdlib": "2.23.13",
     "wasmboy": "^0.7.1",
     "zustand": "^4.3.8"

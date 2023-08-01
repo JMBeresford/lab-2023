@@ -1,5 +1,6 @@
 import { Fragment, ReactNode, useRef, useState } from "react";
 import { useStore, Store } from "../../store";
+import styles from "./Menu.module.scss";
 
 type MenuContext = "main" | "customize" | "emulator" | "controls" | "graphics";
 
@@ -111,9 +112,9 @@ const Footer = (props: JSX.IntrinsicElements["div"]) => {
 
 export function Menu() {
   const menuOpen = useStore((s) => s.menuOpen);
+  const backHome = useStore((s) => s.backHome);
   const prevUIContext = useRef<Store["uiContext"]>(useStore.getState().uiContext);
   const uiContext = useStore((s) => s.uiContext);
-  const pauseGame = useStore((s) => s.pauseGame);
   const [context, setContext] = useState<MenuContext>("main");
   const RenderMenuContext: Record<MenuContext, ReactNode> = {
     main: <MainMenu />,
@@ -148,8 +149,7 @@ export function Menu() {
           {uiContext === "game" && (
             <BackButton
               onClick={async () => {
-                useStore.setState({ menuOpen: false });
-                await pauseGame();
+                backHome("paused");
               }}
             >
               Pause Game
@@ -376,6 +376,7 @@ export function Menu() {
 
   return (
     <div
+      className={styles.menu}
       style={{
         position: "absolute",
         zIndex: 100,
@@ -386,7 +387,6 @@ export function Menu() {
         alignItems: "center",
         justifyContent: "space-around",
         color: "white",
-        fontFamily: "sans-serif",
         opacity: menuOpen ? 1 : 0,
         pointerEvents: menuOpen ? "all" : "none",
         touchAction: menuOpen ? "all" : "none",
