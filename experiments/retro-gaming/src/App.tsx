@@ -9,7 +9,7 @@ import { About } from "./components/About";
 export function Experiment() {
   return (
     <KeyboardControls>
-      <div style={{ height: "100%", width: "100%", position: "relative" }}>
+      <div style={{ height: "100%", width: "100%", position: "relative", fontSize: "20px" }}>
         <Header />
         <Menu />
         <About />

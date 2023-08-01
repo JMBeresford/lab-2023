@@ -2,13 +2,7 @@ const path = require("path");
 
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: [
-    "ui",
-    "@react-three/postprocessing",
-    "postprocessing",
-    "cosmic-platform",
-    "retro-gaming",
-  ],
+  transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
