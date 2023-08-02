@@ -58,9 +58,9 @@ export function Scene() {
 
       <Camera target={gbRef} />
 
-      <OrbitControls />
       {window.location.hash.includes("debug") && (
         <>
+          <OrbitControls />
           <StatsGl />
         </>
       )}
