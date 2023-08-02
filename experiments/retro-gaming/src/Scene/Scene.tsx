@@ -9,7 +9,7 @@ import {
   Environment,
 } from "@react-three/drei";
 import { RefObject, Suspense, useEffect, useMemo, useRef } from "react";
-import { Group, PerspectiveCamera as PerspectiveCameraProps } from "three";
+import { Group, PerspectiveCamera as PerspectiveCameraProps, Quaternion, Vector3 } from "three";
 import { Emulator } from "../utils/Emulator";
 import { damp } from "three/src/math/MathUtils";
 import { Controls } from "../utils/KeyboardHandlers";
@@ -17,10 +17,12 @@ import { useStore } from "../store";
 import { hexToBrightness } from "../utils/colors";
 
 const CAM_POS = { x: 0.00001, y: 2.25, z: 1.15 };
+const GAMEBOY_ROT = Math.PI / 7;
 
 export function Scene() {
   const gbRef = useRef(null);
   const colors = useStore((s) => s.colors);
+  const uiContext = useStore((s) => s.uiContext);
 
   return (
     <Canvas
@@ -40,8 +42,13 @@ export function Scene() {
       <Keyboard />
       <Suspense fallback={null}>
         <Environment preset={"forest"} background={false} resolution={512} />
-        <ContactShadows opacity={0.85} blur={1} resolution={512} />
-        <Gameboy ref={gbRef} position={[0, 0.5, 0]} rotation-x={Math.PI / 7} />
+        <ContactShadows
+          opacity={0.85}
+          blur={1}
+          resolution={512}
+          frames={uiContext === "game" ? 40 : Infinity}
+        />
+        <Gameboy ref={gbRef} position={[0, 0.5, 0]} rotation-x={GAMEBOY_ROT} />
       </Suspense>
 
       <mesh scale={50} rotation-x={-Math.PI / 2} position-y={-0.35}>
@@ -66,6 +73,8 @@ function Camera(props: { target: RefObject<Group> }) {
   const viewport = useThree((s) => s.viewport);
   const lookAtPos = useMemo(() => [0, 0, 0], []);
   const uiContext = useStore((s) => s.uiContext);
+  const tempVec = useMemo(() => new Vector3(), []);
+  const tempQuat = useMemo(() => new Quaternion(), []);
 
   useEffect(() => {
     if (viewport.aspect < 1.1) {
@@ -84,9 +93,12 @@ function Camera(props: { target: RefObject<Group> }) {
     let [toX, toY, toZ]: [number, number, number] = [0, 0, 0];
 
     if (["game", "customizing"].includes(uiContext)) {
-      toX = damp(ref.current.position.x, sx, 8, dt);
-      toY = damp(ref.current.position.y, sy + 1.25, 8, dt);
-      toZ = damp(ref.current.position.z, sz + 0.5, 8, dt);
+      tempQuat.setFromAxisAngle(tempVec.set(1, 0, 0), GAMEBOY_ROT);
+      tempVec.set(0, 1, 0).applyQuaternion(tempQuat);
+      const { x: dx, y: dy, z: dz } = tempVec;
+      toX = damp(ref.current.position.x, sx + dx * 1.45, 8, dt);
+      toY = damp(ref.current.position.y, sy + dy * 1.45, 8, dt);
+      toZ = damp(ref.current.position.z, sz + dz * 1.45, 8, dt);
 
       lookAtPos[0] = damp(lookAtPos[0], sx, 8, dt);
       lookAtPos[1] = damp(lookAtPos[1], sy, 8, dt);
@@ -100,6 +112,7 @@ function Camera(props: { target: RefObject<Group> }) {
       lookAtPos[0] = damp(lookAtPos[0], sx, 8, dt);
       lookAtPos[1] = damp(lookAtPos[1], sy, 8, dt);
       lookAtPos[2] = damp(lookAtPos[2], sz, 8, dt);
+      ref.current.lookAt(lookAtPos[0], lookAtPos[1], lookAtPos[2]);
     }
 
     ref.current.lookAt(lookAtPos[0], lookAtPos[1], lookAtPos[2]);

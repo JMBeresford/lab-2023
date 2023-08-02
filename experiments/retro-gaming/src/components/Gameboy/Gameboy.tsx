@@ -16,6 +16,8 @@ import { Buttons } from "./Buttons";
 import { ForwardedRef, forwardRef, useEffect, useRef, useState } from "react";
 import { MeshType } from "../../utils/types";
 import { Cartridges } from "../Cartridges";
+import { useFrame } from "@react-three/fiber";
+import { damp } from "three/src/math/MathUtils";
 
 export type GameboyGLTFResult = GLTF & {
   nodes: {
@@ -33,9 +35,11 @@ export type GameboyGLTFResult = GLTF & {
 
 export const Gameboy = forwardRef(
   (props: JSX.IntrinsicElements["group"], ref: ForwardedRef<Group>) => {
+    const chassisRef = useRef<Group>(null);
     const shellRef = useRef<MeshType<MeshBasicMaterial>>(null);
     const bezelRef = useRef<MeshType<MeshBasicMaterial>>(null);
     const defaultColors = useStore((s) => s.colors);
+    const insertedCart = useStore((s) => s.insertedCart);
     const uiContext = useStore((s) => s.uiContext);
     const resumeGame = useStore((s) => s.resumeGame);
     const [hovered, setHovered] = useState(false);
@@ -73,51 +77,69 @@ export const Gameboy = forwardRef(
       );
     }, []);
 
+    useFrame(({ clock }, dt) => {
+      if (!chassisRef.current) return;
+
+      if (insertedCart === undefined) {
+        chassisRef.current.rotation.z = damp(
+          chassisRef.current.rotation.z,
+          clock.elapsedTime * 0.25,
+          4,
+          dt,
+        );
+      } else {
+        chassisRef.current.rotation.z %= Math.PI * 2;
+        chassisRef.current.rotation.z = damp(chassisRef.current.rotation.z, 0, 12, dt);
+      }
+    });
+
     const { nodes } = useGLTF(model) as GameboyGLTFResult;
 
     return (
       <group {...props} dispose={null}>
-        <group position={[-0.01301, -0.03815, -0.00326]}>
+        <group ref={chassisRef}>
+          <group position={[-0.01301, -0.03815, -0.00326]}>
+            <a.mesh
+              ref={shellRef}
+              renderOrder={1}
+              castShadow
+              geometry={nodes.shell.geometry}
+              onPointerOver={() => setHovered(true)}
+              onPointerOut={() => setHovered(false)}
+              onClick={async () => {
+                if (uiContext === "paused") {
+                  await resumeGame();
+                }
+              }}
+            >
+              <meshStandardMaterial
+                color={color}
+                aoMap={gb_ao_tex}
+                side={DoubleSide}
+                roughness={0.1}
+                // normalMap={gb_normal_tex}
+              />
+            </a.mesh>
+          </group>
           <a.mesh
-            ref={shellRef}
-            renderOrder={1}
-            castShadow
-            geometry={nodes.shell.geometry}
-            onPointerOver={() => setHovered(true)}
-            onPointerOut={() => setHovered(false)}
-            onClick={async () => {
-              if (uiContext === "paused") {
-                await resumeGame();
-              }
-            }}
+            ref={bezelRef}
+            geometry={nodes.screen_border.geometry}
+            position={[-0.01265, 0.02662, -0.17457]}
           >
             <meshStandardMaterial
-              color={color}
+              color={screen_bezel_color}
               aoMap={gb_ao_tex}
-              side={DoubleSide}
-              roughness={0.1}
-              // normalMap={gb_normal_tex}
+              roughness={0.2}
+              metalness={1}
             />
           </a.mesh>
-        </group>
-        <a.mesh
-          ref={bezelRef}
-          geometry={nodes.screen_border.geometry}
-          position={[-0.01265, 0.02662, -0.17457]}
-        >
-          <meshStandardMaterial
-            color={screen_bezel_color}
-            aoMap={gb_ao_tex}
-            roughness={0.2}
-            metalness={1}
-          />
-        </a.mesh>
 
-        <group ref={ref} position={[-0.01259, 0.02811, -0.23333]}>
-          <Screen />
-        </group>
+          <group ref={ref} position={[-0.01259, 0.02811, -0.23333]}>
+            <Screen />
+          </group>
 
-        <Buttons nodes={nodes} />
+          <Buttons nodes={nodes} />
+        </group>
 
         <Cartridges />
       </group>
