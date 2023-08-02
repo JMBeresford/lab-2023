@@ -47,7 +47,7 @@ export function Cartridge(
   useCursor(hovered && !inserted && !animating);
 
   useEffect(() => {
-    if (!tlRef.current) return;
+    if (!tlRef.current || animating) return;
     if (!inserted) {
       setAnimating(true);
       tlRef.current.reverse();
@@ -57,18 +57,12 @@ export function Cartridge(
         {
           duration: useStore.getState().uiContext === "idle" ? 0 : 1,
           onComplete: () => {
-            tlRef.current?.play().then(() => {
-              if (typeof game.rom === "string") {
-                setRom(game.rom);
-              } else {
-                openFile();
-              }
-            });
+            tlRef.current?.play();
           },
         },
       );
     }
-  }, [inserted]);
+  }, [inserted, animating]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -122,13 +116,18 @@ export function Cartridge(
           z: 0.465,
           duration,
           onComplete: () => {
+            if (typeof game.rom === "string") {
+              setRom(game.rom);
+            } else {
+              openFile();
+            }
             setAnimating(false);
           },
         });
-    });
+    }, outerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [game.rom, openFile, setRom]);
 
   const [cart_ao_tex, sticker_ao_tex] = useTexture([cart_ao_img, sticker_ao_img], (t) => {
     if (t instanceof Array) {
@@ -151,7 +150,7 @@ export function Cartridge(
   const handleClick = useCallback(() => {
     if (animating || inserted || !["idle", "paused"].includes(uiContext)) return;
     useStore.setState({ insertedCart: game.cartNum });
-  }, [game.cartNum, animating, inserted, uiContext]);
+  }, [game, animating, inserted, uiContext]);
 
   useFrame(({ clock }, dt) => {
     if (!ref.current) return;

@@ -45,8 +45,8 @@ export function Header() {
         display: "grid",
         placeItems: "center",
         opacity: uiOpen ? 0 : 1,
-        pointerEvents: "none",
-        touchAction: "none",
+        pointerEvents: uiOpen ? "none" : "all",
+        touchAction: uiOpen ? "none" : "auto",
         zIndex: 99,
         transition: "opacity 0.5s ease-in-out",
       }}
@@ -62,24 +62,13 @@ export function Header() {
         }}
       >
         <h1
-          style={{
-            cursor: "pointer",
-            pointerEvents: uiOpen ? "none" : "all",
-            touchAction: uiOpen ? "none" : "auto",
-          }}
+          style={{ cursor: "pointer" }}
           onClick={() => backHome(uiContext === "game" ? "paused" : undefined)}
         >
           retro gaming
         </h1>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem",
-            pointerEvents: uiOpen ? "none" : "all",
-            touchAction: uiOpen ? "none" : "auto",
-          }}
-        >
+        <div style={{ display: "flex", gap: "2rem" }}>
           {uiContext === "game" && <Button onClick={async () => await pauseGame()}>back</Button>}
           <Button onClick={() => useStore.setState({ menuOpen: true })}>menu</Button>
           <Button onClick={() => useStore.setState({ aboutOpen: true })}>about</Button>
