@@ -47,28 +47,12 @@ export function Cartridge(
   useCursor(hovered && !inserted && !animating);
 
   useEffect(() => {
-    if (!tlRef.current) return;
+    if (!tlRef.current || animating) return;
     if (!inserted) {
       setAnimating(true);
       tlRef.current.reverse();
-    } else {
-      gsap.to(
-        {},
-        {
-          duration: useStore.getState().uiContext === "idle" ? 0 : 1,
-          onComplete: () => {
-            tlRef.current?.play().then(() => {
-              if (typeof game.rom === "string") {
-                setRom(game.rom);
-              } else {
-                openFile();
-              }
-            });
-          },
-        },
-      );
     }
-  }, [inserted]);
+  }, [inserted, animating]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -151,7 +135,22 @@ export function Cartridge(
   const handleClick = useCallback(() => {
     if (animating || inserted || !["idle", "paused"].includes(uiContext)) return;
     useStore.setState({ insertedCart: game.cartNum });
-  }, [game.cartNum, animating, inserted, uiContext]);
+    gsap.to(
+      {},
+      {
+        duration: useStore.getState().uiContext === "idle" ? 0 : 1,
+        onComplete: () => {
+          tlRef.current?.play().then(() => {
+            if (typeof game.rom === "string") {
+              setRom(game.rom);
+            } else {
+              openFile();
+            }
+          });
+        },
+      },
+    );
+  }, [game, animating, inserted, uiContext, openFile, setRom]);
 
   useFrame(({ clock }, dt) => {
     if (!ref.current) return;
