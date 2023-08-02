@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { useStore } from "../store";
 import styles from "./Header.module.scss";
-
-function hexToBrightness(hex: string) {
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
-
-  return (r + g + b) / 3;
-}
+import { hexToBrightness } from "../utils/colors";
 
 function Button(props: JSX.IntrinsicElements["h3"]) {
   const { children, ...rest } = props;

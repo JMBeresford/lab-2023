@@ -20,7 +20,7 @@ const MenuLink = (props: JSX.IntrinsicElements["h3"]) => {
       }}
       {...rest}
     >
-      {props.children}
+      {children}
     </h3>
   );
 };
@@ -41,7 +41,7 @@ const BackButton = (props: JSX.IntrinsicElements["h5"]) => {
       }}
       {...rest}
     >
-      {props.children}
+      {children}
     </h5>
   );
 };
@@ -64,7 +64,7 @@ const BackButtonPadded = (props: JSX.IntrinsicElements["h5"]) => {
       }}
       {...rest}
     >
-      {props.children}
+      {children}
     </h5>
   );
 };
@@ -76,7 +76,7 @@ const MenuItems = (props: JSX.IntrinsicElements["div"]) => {
       style={{ display: "flex", flexDirection: "column", gap: "1rem", alignItems: "center" }}
       {...rest}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
@@ -96,7 +96,7 @@ const MenuItemsGrid = (props: JSX.IntrinsicElements["div"]) => {
       }}
       {...rest}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
@@ -105,7 +105,7 @@ const Footer = (props: JSX.IntrinsicElements["div"]) => {
   const { children, ...rest } = props;
   return (
     <div style={{ display: "flex", gap: "1.5rem" }} {...rest}>
-      {props.children}
+      {children}
     </div>
   );
 };
@@ -294,6 +294,23 @@ export function Menu() {
           >
             Apply
           </BackButton>
+          {/* <BackButton
+            onClick={(e) => {
+              const target = e.target as HTMLButtonElement;
+              target.disabled = true;
+              const req = indexedDB.deleteDatabase("wasmboy");
+              req.onerror = () => {
+                console.log("Error deleting saves database");
+                target.disabled = false;
+              };
+              req.onsuccess = () => {
+                console.log("Saves database deleted successfully");
+                target.disabled = false;
+              };
+            }}
+          >
+            Clear Saves
+          </BackButton> */}
         </Footer>
       </>
     );

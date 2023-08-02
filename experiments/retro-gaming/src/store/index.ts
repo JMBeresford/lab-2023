@@ -20,6 +20,7 @@ export type Store = {
   readonly emulator: Emulator;
   menuOpen: boolean;
   aboutOpen: boolean;
+  tooltipDismissed: boolean;
   colors: {
     shell: string;
     buttons: string;
@@ -42,6 +43,7 @@ const PersistedKeys: readonly Partial<keyof Store>[] = [
   "muted",
   "emulatorSpeed",
   "keymap",
+  "tooltipDismissed",
 ] as const;
 type PersistedKeys = typeof PersistedKeys[keyof typeof PersistedKeys];
 
@@ -53,12 +55,13 @@ export const useStore = create<Store>()(
           emulator: Emulator,
           menuOpen: false,
           aboutOpen: false,
+          tooltipDismissed: false,
           colors: {
-            shell: "#5E629C",
-            buttons: "#B94C1D",
-            bezel: "#350D3A",
+            shell: "#4c3e7e",
+            buttons: "#808080",
+            bezel: "#474747",
             cartridge: "#798389",
-            floor: "#ACB4DC",
+            floor: "#3a383d",
           },
           volume: 0.5,
           muted: false,
@@ -152,7 +155,7 @@ export const useStore = create<Store>()(
       },
       {
         name: "jberesford-retro-gaming",
-        version: 18,
+        version: 22,
         partialize: (state) =>
           Object.fromEntries(
             Object.entries(state).filter(([key]) =>

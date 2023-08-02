@@ -30,6 +30,7 @@ export function useFileUpload(
   function openFile() {
     const fileUpload = document.createElement("input");
     fileUpload.type = "file";
+    fileUpload.accept = ".gb,.gbc,.zip";
     fileUpload.onchange = onFileChange;
 
     if (fileUpload) {

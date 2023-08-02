@@ -2,4 +2,11 @@
 
 .menu {
   font-family: $font-family;
+
+  input[type="color"] {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    block-size: 2rem;
+    inline-size: 2rem;
+  }
 }

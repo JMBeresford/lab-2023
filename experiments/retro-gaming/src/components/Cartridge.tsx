@@ -23,7 +23,6 @@ type GLTFResult = GLTF & {
     cart_body: Mesh;
     Plane: Mesh;
   };
-  materials: {};
 };
 
 export function Cartridge(
@@ -63,7 +62,7 @@ export function Cartridge(
         },
       );
     }
-  }, [inserted]);
+  }, [inserted, animating]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -73,8 +72,8 @@ export function Cartridge(
       tlRef.current = gsap
         .timeline({ paused: true })
         .to(outerRef.current.position, {
-          x: 0,
-          z: -0.85,
+          x: -0.01,
+          z: -0.74,
           onReverseComplete: () => {
             setAnimating(false);
           },
@@ -87,7 +86,7 @@ export function Cartridge(
         .to(
           outerRef.current.position,
           {
-            y: -0.75 + 0.115,
+            y: -0.07,
             ease: Linear.easeOut,
             duration,
           },
@@ -128,7 +127,7 @@ export function Cartridge(
     }, outerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [game.rom, openFile, setRom]);
 
   const [cart_ao_tex, sticker_ao_tex] = useTexture([cart_ao_img, sticker_ao_img], (t) => {
     if (t instanceof Array) {
@@ -151,7 +150,7 @@ export function Cartridge(
   const handleClick = useCallback(() => {
     if (animating || inserted || !["idle", "paused"].includes(uiContext)) return;
     useStore.setState({ insertedCart: game.cartNum });
-  }, [game.rom, animating, inserted, uiContext]);
+  }, [game, animating, inserted, uiContext]);
 
   useFrame(({ clock }, dt) => {
     if (!ref.current) return;
@@ -166,7 +165,7 @@ export function Cartridge(
     }
     if (animating || inserted) return;
     const t = offset.current + clock.elapsedTime;
-    ref.current.rotation.x = Math.PI / 7 + Math.cos(t / 4) / 8;
+    ref.current.rotation.x = Math.cos(t / 4) / 8;
     ref.current.rotation.y = Math.sin(t / 4) / 8;
     ref.current.rotation.z = Math.sin(t / 4) / 20;
 
@@ -180,7 +179,6 @@ export function Cartridge(
       <group ref={ref}>
         <mesh
           geometry={nodes.cart_body.geometry}
-          castShadow
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
           onClick={handleClick}
@@ -188,6 +186,8 @@ export function Cartridge(
         >
           <meshStandardMaterial
             color={game.rom ? color : "#cccc00"}
+            roughness={game.rom ? 1 : 0.1}
+            metalness={game.rom ? 0 : 1}
             aoMap={cart_ao_tex}
             side={DoubleSide}
             transparent
