@@ -1,0 +1,76 @@
+@import "/src/fonts";
+
+.tooltip {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 99;
+  height: 3rem;
+  padding: 0 1.5rem;
+
+  font-family: $font-family;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  button {
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border: none;
+    text-decoration: underline;
+
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  button:not(.close) {
+    color: rgb(0, 0, 0);
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: rgb(255, 84, 84);
+    }
+  }
+
+  .close {
+    display: grid;
+    place-items: center;
+    position: relative;
+    background-color: black;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgb(255, 84, 84);
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: white;
+      width: 50%;
+      height: 1.5px;
+      transform-origin: center;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+  }
+}

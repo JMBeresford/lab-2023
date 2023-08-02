@@ -1,0 +1,41 @@
+@import "/src/fonts";
+
+.about {
+  font-family: $font-family;
+  overflow-y: auto;
+
+  h1 {
+    font-family: $font-family-large;
+    margin: 1rem 0 2rem;
+  }
+
+  h3 {
+    font-size: 1.85rem;
+    margin: 0.75rem 0;
+    text-decoration: underline;
+  }
+
+  a,
+  a:any-link {
+    color: rgb(255, 84, 84);
+  }
+
+  .credits {
+    max-width: (80ch);
+
+    .subsection {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    h4 {
+      font-size: 1.65rem;
+    }
+
+    li {
+      list-style-position: inside;
+    }
+  }
+}

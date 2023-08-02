@@ -5,9 +5,11 @@ import skywalkerImg from "./images/skywalker.png?url";
 import srankjutsuImg from "./images/srankjutsu.png?url";
 import workfromhomeImg from "./images/workfromhome.png?url";
 import oceanichorizonImg from "./images/oceanichorizon.png?url";
+import retrogamingImg from "./images/retrogaming.png?url";
 import extradimensionalinputformImg from "./images/extradimensionalinputform.png?url";
 
 const experiments = [
+  "retro-gaming",
   "metaballs",
   "work-from-home",
   "s-rank-jutsu",
@@ -28,6 +30,12 @@ export type ExperimentDatum = {
 };
 
 export const ExperimentData: Record<Experiment, ExperimentDatum> = {
+  "retro-gaming": {
+    name: "retro-gaming",
+    label: "Retro Gaming",
+    pathName: "RetroGaming",
+    image: retrogamingImg,
+  },
   metaballs: {
     name: "metaballs",
     label: "Metaballs",

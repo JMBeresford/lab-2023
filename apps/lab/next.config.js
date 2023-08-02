@@ -6,7 +6,7 @@ module.exports = {
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
-      test: /\.(ogg|mp3|wav|mpe?g|ttf|hdr|glb|gltf)$/i,
+      test: /\.(ogg|mp3|wav|mpe?g|ttf|hdr|glb|gltf|gb)$/i,
       exclude: config.exclude,
       use: [
         {

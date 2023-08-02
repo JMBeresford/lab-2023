@@ -1,0 +1,18 @@
+@import "/src/fonts";
+
+.header {
+  font-family: $font-family;
+
+  h1 {
+    font-family: $font-family-large;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    h1 {
+      font-size: 1.125rem;
+      width: min-content;
+    }
+  }
+}
