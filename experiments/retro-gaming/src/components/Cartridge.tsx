@@ -50,7 +50,9 @@ export function Cartridge(
     if (!tlRef.current || animating) return;
     if (!inserted) {
       setAnimating(true);
-      tlRef.current.reverse();
+      tlRef.current.reverse().then(() => {
+        setAnimating(false);
+      });
     }
   }, [inserted, animating]);
 
@@ -64,12 +66,6 @@ export function Cartridge(
         .to(outerRef.current.position, {
           x: -0.01,
           z: -0.74,
-          onReverseComplete: () => {
-            setAnimating(false);
-          },
-          onStart: () => {
-            setAnimating(true);
-          },
           ease: Linear.easeIn,
           duration,
         })
@@ -105,9 +101,6 @@ export function Cartridge(
         .to(ref.current.position, {
           z: 0.465,
           duration,
-          onComplete: () => {
-            setAnimating(false);
-          },
         });
     });
 
@@ -135,12 +128,14 @@ export function Cartridge(
   const handleClick = useCallback(() => {
     if (animating || inserted || !["idle", "paused"].includes(uiContext)) return;
     useStore.setState({ insertedCart: game.cartNum });
+    setAnimating(true);
     gsap.to(
       {},
       {
         duration: useStore.getState().uiContext === "idle" ? 0 : 1,
         onComplete: () => {
           tlRef.current?.play().then(() => {
+            setAnimating(false);
             if (typeof game.rom === "string") {
               setRom(game.rom);
             } else {
