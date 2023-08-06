@@ -4,11 +4,10 @@
   box-sizing: border-box;
 }
 
-/* .jb-retro-gaming,
-.jb-retro-gaming *:not(a) {
-  touch-action: none;
-  user-select: none;
-} */
+body, #root {
+  width: 100dvw;
+  height: 100dvh;
+}
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   select,

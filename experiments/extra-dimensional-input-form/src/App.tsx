@@ -1,3 +1,4 @@
+import "./App.css";
 import { Scene } from "./LoginScene";
 
 export function Experiment() {

@@ -4,6 +4,7 @@
     "build": "turbo run build",
     "build:lab": "turbo run build:lab",
     "build:data": "turbo run build:data",
+    "clean": "git clean -dfX",
     "dev": "turbo run dev",
     "dev:lab": "turbo run dev:lab --concurrency 20",
     "lint": "turbo run lint",
