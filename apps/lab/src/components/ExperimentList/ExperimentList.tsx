@@ -1,6 +1,6 @@
 "use client";
 
-import { ExperimentData, ExperimentDatum } from "experiment-data";
+import { ExperimentData, ExperimentDatum, ExperimentImages } from "experiment-data";
 import styles from "./ExperimentList.module.scss";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { hoverHandlers } from "@/helpers/utils";
@@ -47,7 +47,7 @@ function ListEntry({ experiment, idx }: { experiment: ExperimentDatum; idx: numb
     >
       <animated.img
         ref={ref}
-        src={experiment.image}
+        src={ExperimentImages[experiment.name]}
         className={styles.previewImg}
         alt={experiment.label}
         style={style}
