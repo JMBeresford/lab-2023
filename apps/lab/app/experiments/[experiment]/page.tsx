@@ -1,5 +1,5 @@
-// import { getMetadata } from "@/helpers/metadata";
-// import { ExperimentData } from "experiment-data";
+import { getMetadata } from "@/helpers/metadata";
+import { ExperimentData } from "experiment-data";
 import dynamic from "next/dynamic";
 
 const ExperimentFrame = dynamic(() => import("./ExperimentFrame"), { ssr: false });
@@ -28,15 +28,15 @@ export default function Page({ params }: Props) {
 //   }));
 // }
 
-// export async function generateMetadata({ params }: Props) {
-//   const experimentDatum = Object.values(ExperimentData).find(
-//     (e) => e.pathName === params.experiment,
-//   );
+export async function generateMetadata({ params }: Props) {
+  const experimentDatum = Object.values(ExperimentData).find(
+    (e) => e.pathName === params.experiment,
+  );
 
-//   if (!experimentDatum) return getMetadata({});
+  if (!experimentDatum) return getMetadata({});
 
-//   return getMetadata({
-//     prefixTitle: experimentDatum.label,
-//     suffixUrl: `experiments/${experimentDatum.pathName}`,
-//   });
-// }
+  return getMetadata({
+    prefixTitle: experimentDatum.label,
+    suffixUrl: `experiments/${experimentDatum.pathName}`,
+  });
+}
