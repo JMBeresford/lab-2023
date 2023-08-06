@@ -3,7 +3,7 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
 on:
   push:
-    branches-ignore:
+    branches:
       - main
 jobs:
   Deploy-Preview:
