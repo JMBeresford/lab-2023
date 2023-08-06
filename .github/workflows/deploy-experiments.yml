@@ -50,8 +50,13 @@ jobs:
       # - name: Link Vercel Project
       #   run: vercel link -p ${{ matrix.experiment }} -y -t ${{ secrets.VERCEL_TOKEN }}
 
+      - name: Extract Project ID
+        id: set-project-id
+        run: |
+          echo "::set-output name=project-id::$(${{ vars.PROJECT_IDS }} | jq .${{ matrix.experiment }})"
+
       - name: Set Project ID as Environment Variable
-        run: echo "VERCEL_PROJECT_ID=${{ env.PROJECT_IDS }} | jq .${{ matrix.experiment }}" >> $GITHUB_ENV
+        run: echo "VERCEL_PROJECT_ID=${{ steps.set-project-id.outputs.project-id }}" >> $GITHUB_ENV
 
       - name: Pull Vercel Environment
         run: vercel pull --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
