@@ -47,17 +47,11 @@ jobs:
       - name: Install Vercel CLI
         run: pnpm install --global vercel@latest
 
-      - name: Link Vercel Project
-        run: vercel link -p ${{ matrix.experiment }} -y -t ${{ secrets.VERCEL_TOKEN }}
-
-      - name: Extract Project ID
-        id: set_var
-        run: |
-          content=`cat .vercel/project.json`
-          echo "::set-output name=project_id::$content"
+      # - name: Link Vercel Project
+      #   run: vercel link -p ${{ matrix.experiment }} -y -t ${{ secrets.VERCEL_TOKEN }}
 
       - name: Set Project ID as Environment Variable
-        run: echo "VERCEL_PROJECT_ID=${{ fromJson(steps.set_var.outputs.project_id) }}" >> $GITHUB_ENV
+        run: echo "VERCEL_PROJECT_ID=${{ fromJson(env.project_ids) }} | jq .${{ matrix.experiment }}" >> $GITHUB_ENV
 
       - name: Pull Vercel Environment
         run: vercel pull --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
