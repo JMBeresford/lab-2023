@@ -41,6 +41,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-
 
+      - name: Extract Project ID
+        id: set-project-id
+        run: |
+          echo "::set-output name=project-id::$(echo '${{ vars.PROJECT_IDS }}' | jq '.\"${{ matrix.experiment }})\"'"
+
+      - name: Set Project ID as Environment Variable
+        run: echo "VERCEL_PROJECT_ID=${{ steps.set-project-id.outputs.project-id }}" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: pnpm install
 
@@ -49,14 +57,6 @@ jobs:
 
       # - name: Link Vercel Project
       #   run: vercel link -p ${{ matrix.experiment }} -y -t ${{ secrets.VERCEL_TOKEN }}
-
-      - name: Extract Project ID
-        id: set-project-id
-        run: |
-          echo "::set-output name=project-id::$(echo '${{ vars.PROJECT_IDS }}' | jq '.\"${{ matrix.experiment }})\"'"
-
-      - name: Set Project ID as Environment Variable
-        run: echo "VERCEL_PROJECT_ID=${{ steps.set-project-id.outputs.project-id }}" >> $GITHUB_ENV
 
       - name: Pull Vercel Environment
         run: vercel pull --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
