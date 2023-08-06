@@ -1,4 +1,4 @@
-name: Vercel Preview Deployment
+name: Vercel Production Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
 on:
@@ -6,7 +6,7 @@ on:
     branches:
       - main
 jobs:
-  Deploy-Preview:
+  Deploy-Production:
     strategy:
       matrix:
         experiment:
