@@ -5,7 +5,7 @@ module.exports = {
   transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
   experimental: {
     outputFileTracingExcludes: {
-      "*": ["**swc/core**"],
+      "*": ["**@swc+core**"],
     },
   },
 
