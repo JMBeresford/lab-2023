@@ -11,11 +11,7 @@ type Props = {
 };
 
 export default function Page({ params }: Props) {
-  return (
-    <div>
-      <ExperimentFrame experiment={params.experiment} />
-    </div>
-  );
+  return <ExperimentFrame experiment={params.experiment} />;
 }
 
 export async function generateStaticParams() {
