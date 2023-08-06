@@ -53,7 +53,7 @@ jobs:
       - name: Extract Project ID
         id: set-project-id
         run: |
-          echo "::set-output name=project-id::$(echo '${{ vars.PROJECT_IDS }}' | jq .${{ matrix.experiment }})"
+          echo "::set-output name=project-id::$(echo '${{ fromJson(vars.PROJECT_IDS) }}' | jq .${{ matrix.experiment }})"
 
       - name: Set Project ID as Environment Variable
         run: echo "VERCEL_PROJECT_ID=${{ steps.set-project-id.outputs.project-id }}" >> $GITHUB_ENV
