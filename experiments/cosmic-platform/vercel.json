@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter cosmic-platform",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/cosmic-platform/dist",
+  "public": true
+}

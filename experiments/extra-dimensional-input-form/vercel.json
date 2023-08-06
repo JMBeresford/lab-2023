@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter extra-dimensional-input-form",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/extra-dimensional-input-form/dist",
+  "public": true
+}

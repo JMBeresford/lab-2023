@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter oceanic-horizon",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/oceanic-horizon/dist",
+  "public": true
+}

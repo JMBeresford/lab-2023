@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter chaos-sphere",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/chaos-sphere/dist",
+  "public": true
+}
