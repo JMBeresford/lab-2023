@@ -10,7 +10,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 const BOX_WIDTH = 10;
 
 export function Particles() {
-  const ref = useRef<PointsImpl<BufferGeometry, ParticlesMaterialProps>>(undefined);
+  const ref = useRef<PointsImpl<BufferGeometry, ParticlesMaterialProps>>(null);
   const maskTex = useTexture(particleMaskImg);
   const { dpr } = useThree((s) => s.viewport);
 
@@ -47,10 +47,12 @@ export function Particles() {
   }, [count]);
 
   useEffect(() => {
+    if (!ref.current) return;
     ref.current.geometry.setAttribute("aPositionEnd", endPositions);
   }, [endPositions]);
 
   useFrame(({ clock }) => {
+    if (!ref.current) return;
     ref.current.material.uTime = clock.elapsedTime + 1000;
   });
 

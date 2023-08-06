@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 
 export function Sky() {
-  const ref = useRef<Mesh<BufferGeometry, SkyMaterialProps>>(undefined);
+  const ref = useRef<Mesh<BufferGeometry, SkyMaterialProps>>(null);
 
   const { color1, color2 } = useControls("sky", {
     color1: "#2a0048",
@@ -13,6 +13,7 @@ export function Sky() {
   });
 
   useFrame(({ clock }) => {
+    if (!ref.current) return;
     ref.current.material.uTime = clock.elapsedTime;
   });
 

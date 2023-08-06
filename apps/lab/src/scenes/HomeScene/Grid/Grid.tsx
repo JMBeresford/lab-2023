@@ -5,13 +5,14 @@ import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 
 export function Grid() {
-  const ref = useRef<Mesh<BufferGeometry, GridMaterialProps>>(undefined);
+  const ref = useRef<Mesh<BufferGeometry, GridMaterialProps>>(null);
 
   const { color } = useControls("grid", {
     color: "#9d52fe",
   });
 
   useFrame(({ clock }) => {
+    if (!ref.current) return;
     ref.current.material.uTime = clock.elapsedTime;
   });
 
