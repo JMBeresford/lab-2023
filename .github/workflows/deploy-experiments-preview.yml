@@ -1,0 +1,65 @@
+name: Vercel Preview Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  Deploy-Preview:
+    strategy:
+      matrix:
+        experiment:
+          - retro-gaming
+          - chaos-sphere
+          - cosmic-platform
+          - work-from-home
+          - extra-dimensional-input-form
+          - oceanic-horizon
+          - s-rank-jutsu
+          - skywalker
+          - metaballs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-
+
+      - name: Extract Project ID
+        id: set-project-id
+        run: |
+          echo "PROJECT_ID=$(echo '${{ vars.PROJECT_IDS }}' | jq '."${{ matrix.experiment }}"')" >> $GITHUB_ENV
+
+      - name: Set Project ID as Environment Variable
+        run: echo "VERCEL_PROJECT_ID=${{ fromJson(env.PROJECT_ID) }}" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel@latest
+
+      - name: Pull Vercel Environment
+        run: vercel pull --environment=preview -t ${{ secrets.VERCEL_TOKEN }} -y
+
+      - name: Build Project Artifacts
+        run: vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
