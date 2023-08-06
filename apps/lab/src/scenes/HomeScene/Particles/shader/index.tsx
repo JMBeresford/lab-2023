@@ -26,9 +26,11 @@ extend({ BaseParticlesMaterial });
 
 export type ParticlesMaterialProps = Uniforms & ShaderMaterial;
 
-declare module "@react-three/fiber" {
-  interface ThreeElements {
-    baseParticlesMaterial: MaterialNode<ParticlesMaterialProps, typeof BaseParticlesMaterial>;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      baseParticlesMaterial: MaterialNode<ParticlesMaterialProps, typeof BaseParticlesMaterial>;
+    }
   }
 }
 

@@ -42,9 +42,11 @@ extend({ BaseReticleMaterial });
 
 export type ReticleMaterialProps = Partial<Uniforms> & ShaderMaterial;
 
-declare module "@react-three/fiber" {
-  interface ThreeElements {
-    baseReticleMaterial: ReticleMaterialProps;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      baseReticleMaterial: ReticleMaterialProps;
+    }
   }
 }
 
