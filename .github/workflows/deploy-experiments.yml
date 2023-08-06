@@ -44,7 +44,10 @@ jobs:
       - name: Extract Project ID
         id: set-project-id
         run: |
-          echo "VERCEL_PROJECT_ID=$(echo '${{ vars.PROJECT_IDS }}' | jq '."${{ matrix.experiment }}"')" >> $GITHUB_ENV
+          echo "PROJECT_ID=$(echo '${{ vars.PROJECT_IDS }}' | jq '."${{ matrix.experiment }}"')" >> $GITHUB_ENV
+
+      - name: Set Project ID as Environment Variable
+        run: echo "VERCEL_PROJECT_ID=${{ fromJson(env.PROJECT_ID) }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: pnpm install
