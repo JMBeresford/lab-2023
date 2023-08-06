@@ -62,7 +62,7 @@ jobs:
       #   run: vercel pull --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: vercel build -A =/experiments/${{ matrix.experiment }}/vercel.json --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build -A /experiments/${{ matrix.experiment }}/vercel.json --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
