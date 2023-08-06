@@ -2,7 +2,7 @@ import { shaderMaterial } from "@react-three/drei";
 import vertexShader from "./vert.glsl";
 import fragmentShader from "./frag.glsl";
 import { ShaderMaterial, Texture, Vector2 } from "three";
-import { extend } from "@react-three/fiber";
+import { MaterialNode, extend } from "@react-three/fiber";
 import { animated } from "@react-spring/three";
 
 type Uniforms = {
@@ -45,10 +45,9 @@ export type ReticleMaterialProps = Partial<Uniforms> & ShaderMaterial;
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      baseReticleMaterial: ReticleMaterialProps;
+      baseReticleMaterial: MaterialNode<ReticleMaterialProps, typeof BaseReticleMaterial>;
     }
   }
 }
 
-// @ts-expect-error bad lib types
-export const ReticleMaterial = animated(<baseReticleMaterial />);
+export const ReticleMaterial = animated("baseReticleMaterial");
