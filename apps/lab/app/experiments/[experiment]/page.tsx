@@ -1,6 +1,8 @@
 import { getMetadata } from "@/helpers/metadata";
 import { ExperimentData } from "experiment-data";
-import { redirect } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const ExperimentFrame = dynamic(() => import("./ExperimentFrame"), { ssr: false });
 
 type Props = {
   params: {
@@ -9,13 +11,11 @@ type Props = {
 };
 
 export default function Page({ params }: Props) {
-  const experimentDatum = Object.values(ExperimentData).find(
-    (e) => e.pathName === params.experiment,
+  return (
+    <div>
+      <ExperimentFrame experiment={params.experiment} />
+    </div>
   );
-
-  if (!experimentDatum) redirect("/404");
-
-  return <iframe src={`https://${experimentDatum.pathName}.jmberesford.vercel.app`} />;
 }
 
 export async function generateStaticParams() {
