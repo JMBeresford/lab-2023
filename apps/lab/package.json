@@ -15,6 +15,7 @@
     "@types/three": "^0.152.0",
     "experiment-assets": "workspace:*",
     "experiment-data": "workspace:*",
+    "experiment-images": "workspace:*",
     "file-loader": "^6.2.0",
     "framer-motion": "^10.12.16",
     "glsl-noise": "^0.0.0",

@@ -1,6 +1,7 @@
 "use client";
 
-import { ExperimentData, ExperimentDatum, ExperimentImages } from "experiment-data";
+import { ExperimentData, ExperimentDatum } from "experiment-data";
+import { ExperimentImages } from "experiment-images";
 import styles from "./ExperimentList.module.scss";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { hoverHandlers } from "@/helpers/utils";
