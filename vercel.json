@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/experiments/:path*",
-      "destination": "https://:path*.jmberesford.vercel.app"
-    }
-  ]
-}

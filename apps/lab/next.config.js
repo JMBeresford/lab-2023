@@ -6,8 +6,8 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: "/experiments/:path*",
-        destination: "https://:path*.jmberesford.vercel.app",
+        source: "/experiments/Metaballs",
+        destination: "https://Metaballs.jmberesford.vercel.app",
       },
     ];
   },
