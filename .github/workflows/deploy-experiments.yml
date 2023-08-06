@@ -37,9 +37,9 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
@@ -50,5 +50,11 @@ jobs:
       - name: Link Vercel Project
         run: vercel link -p ${{ matrix.experiment }} -y -t ${{ secrets.VERCEL_TOKEN }}
 
+      - name: Pull Vercel Environment
+        run: vercel pull --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
