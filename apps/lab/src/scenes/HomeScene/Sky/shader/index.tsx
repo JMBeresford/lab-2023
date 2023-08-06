@@ -17,6 +17,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseSkyMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = false;
   m.depthWrite = false;
   m.side = BackSide;
@@ -26,11 +27,9 @@ extend({ BaseSkyMaterial });
 
 export type SkyMaterialProps = Uniforms & ShaderMaterial;
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      baseSkyMaterial: MaterialNode<SkyMaterialProps, typeof BaseSkyMaterial>;
-    }
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    baseSkyMaterial: MaterialNode<SkyMaterialProps, typeof BaseSkyMaterial>;
   }
 }
 

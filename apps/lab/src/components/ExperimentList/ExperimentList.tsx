@@ -20,7 +20,7 @@ const exo = Exo({
 });
 
 function ListEntry({ experiment, idx }: { experiment: ExperimentDatum; idx: number }) {
-  const ref = useRef<HTMLImageElement>(undefined);
+  const ref = useRef<HTMLImageElement>(null);
   const [hovered, setHovered] = useState<boolean>(false);
 
   const style = useSpring({
@@ -41,6 +41,7 @@ function ListEntry({ experiment, idx }: { experiment: ExperimentDatum; idx: numb
         setHovered(false);
       }}
       onPointerMove={(e) => {
+        if (!ref.current) return;
         ref.current.style.transform = `translateX(calc(-50% + ${e.clientX}px)) translateY(calc(-50% + ${e.clientY}px))`;
       }}
     >

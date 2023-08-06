@@ -3,14 +3,6 @@ const path = require("path");
 module.exports = {
   reactStrictMode: true,
   transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
-  async rewrites() {
-    return [
-      {
-        source: "/experiments/Metaballs",
-        destination: "https://Metaballs.jmberesford.vercel.app",
-      },
-    ];
-  },
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({

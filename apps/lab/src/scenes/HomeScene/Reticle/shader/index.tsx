@@ -2,7 +2,7 @@ import { shaderMaterial } from "@react-three/drei";
 import vertexShader from "./vert.glsl";
 import fragmentShader from "./frag.glsl";
 import { ShaderMaterial, Texture, Vector2 } from "three";
-import { MaterialNode, extend } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
 import { animated } from "@react-spring/three";
 
 type Uniforms = {
@@ -32,6 +32,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseReticleMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.premultipliedAlpha = true;
   m.depthTest = false;
@@ -39,14 +40,13 @@ const BaseReticleMaterial = shaderMaterial(uniforms, vertexShader, fragmentShade
 
 extend({ BaseReticleMaterial });
 
-export type ReticleMaterialProps = Uniforms & ShaderMaterial;
+export type ReticleMaterialProps = Partial<Uniforms> & ShaderMaterial;
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      baseReticleMaterial: MaterialNode<ReticleMaterialProps, typeof BaseReticleMaterial>;
-    }
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    baseReticleMaterial: ReticleMaterialProps;
   }
 }
 
-export const ReticleMaterial = animated("baseReticleMaterial");
+// @ts-expect-error bad lib types
+export const ReticleMaterial = animated(<baseReticleMaterial />);

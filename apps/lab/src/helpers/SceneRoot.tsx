@@ -1,12 +1,12 @@
 "use client";
 
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { SceneTunnel } from "./tunnel";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { ACESFilmicToneMapping } from "three";
 
 export function SceneRoot(props: { children: ReactNode }) {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -23,7 +23,7 @@ export function SceneRoot(props: { children: ReactNode }) {
       <Canvas
         gl={{ antialias: false, toneMappingExposure: 1, toneMapping: ACESFilmicToneMapping }}
         style={{ position: "fixed", inset: 0, zIndex: -1, pointerEvents: "none" }}
-        eventSource={ref}
+        eventSource={ref != null ? ref.current! : undefined}
         eventPrefix="client"
       >
         <SceneTunnel.Out />

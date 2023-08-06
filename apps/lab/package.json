@@ -4,7 +4,7 @@
   "scripts": {
     "dev:lab": "next dev",
     "build:lab": "next build",
-    "lint": "next lint"
+    "lint": "next lint --max-warnings=0"
   },
   "dependencies": {
     "@react-spring/three": "^9.7.2",

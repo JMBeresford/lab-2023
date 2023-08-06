@@ -17,6 +17,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseParticlesMaterial = shaderMaterial(uniforms, vertShader, fragShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.depthTest = false;
 });
@@ -25,11 +26,9 @@ extend({ BaseParticlesMaterial });
 
 export type ParticlesMaterialProps = Uniforms & ShaderMaterial;
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      baseParticlesMaterial: MaterialNode<ParticlesMaterialProps, typeof BaseParticlesMaterial>;
-    }
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    baseParticlesMaterial: MaterialNode<ParticlesMaterialProps, typeof BaseParticlesMaterial>;
   }
 }
 

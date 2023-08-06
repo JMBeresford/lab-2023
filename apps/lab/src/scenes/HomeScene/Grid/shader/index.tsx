@@ -14,6 +14,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseGridMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.premultipliedAlpha = true;
   m.blending = AdditiveBlending;
@@ -24,11 +25,9 @@ extend({ BaseGridMaterial });
 
 export type GridMaterialProps = Uniforms & ShaderMaterial;
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      baseGridMaterial: MaterialNode<GridMaterialProps, typeof BaseGridMaterial>;
-    }
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    baseGridMaterial: MaterialNode<GridMaterialProps, typeof BaseGridMaterial>;
   }
 }
 

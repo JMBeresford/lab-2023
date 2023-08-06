@@ -1,4 +1,4 @@
-import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { ReticleMaterial, ReticleMaterialProps } from "./shader";
 import { useEffect, useRef } from "react";
 import { BufferGeometry, Mesh } from "three";
@@ -8,7 +8,7 @@ import { useSpring } from "@react-spring/three";
 import { useTexture } from "@react-three/drei";
 
 export function Reticle() {
-  const ref = useRef<Mesh<BufferGeometry, ReticleMaterialProps>>(undefined);
+  const ref = useRef<Mesh<BufferGeometry, ReticleMaterialProps>>(null);
   const { width, height } = useThree((state) => state.size);
   const hovering = useLabStore((state) => state.hovering);
   const mobile = useLabStore((state) => state.mobile);
@@ -24,6 +24,7 @@ export function Reticle() {
   });
 
   useFrame(({ mouse, clock }, dt) => {
+    if (!ref.current) return;
     const mx = ((mouse.x + 1.0) / 2) * width;
     const my = ((mouse.y + 1.0) / 2) * height;
 
@@ -76,6 +77,7 @@ export function Reticle() {
   return (
     <mesh ref={ref} position-z={-1} frustumCulled={false}>
       <planeGeometry args={[2, 2]} />
+      {/* @ts-expect-error bad lib types */}
       <ReticleMaterial
         uResolution={[width, height]}
         uHovered={hovered}

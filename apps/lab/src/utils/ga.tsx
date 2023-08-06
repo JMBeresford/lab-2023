@@ -1,19 +1,27 @@
-// "use client";
-
-// import { usePathname } from "next/navigation";
 import Script from "next/script";
-// import { useEffect } from "react";
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-export const pageview = (url) => {
-  (window as any).gtag("config", "G-77KMRW6WVC", {
+export const pageview = (url: string) => {
+  // @ts-expect-error window must be typed as unknown here
+  (window as unknown).gtag("config", "G-77KMRW6WVC", {
     page_path: url,
   });
 };
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({ action, category, label, value }) => {
-  (window as any).gtag("event", action, {
+export const event = ({
+  action,
+  category,
+  label,
+  value,
+}: {
+  action: string;
+  category: string;
+  label: string;
+  value: string;
+}) => {
+  // @ts-expect-error window must be typed as unknown here
+  (window as unknown).gtag("event", action, {
     event_category: category,
     event_label: label,
     value: value,
@@ -22,12 +30,6 @@ export const event = ({ action, category, label, value }) => {
 
 export const Analytics = () => {
   if (process.env.NODE_ENV !== "production") return null;
-
-  // const path = usePathname();
-
-  // useEffect(() => {
-  //   pageview(path);
-  // }, [path]);
 
   return (
     <>
