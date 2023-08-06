@@ -3,11 +3,6 @@ const path = require("path");
 module.exports = {
   reactStrictMode: true,
   transpilePackages: ["ui", "@react-three/postprocessing", "postprocessing", "cosmic-platform"],
-  experimental: {
-    outputFileTracingExcludes: {
-      "*": ["**@swc+core**"],
-    },
-  },
 
   webpack: (config, { isServer }) => {
     config.module.rules.push({
