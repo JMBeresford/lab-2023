@@ -62,4 +62,5 @@ jobs:
         run: vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y --prod
 
       - name: Deploy Project Artifacts to Vercel
+        if: !env.ACT
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
