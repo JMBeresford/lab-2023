@@ -1,24 +1,28 @@
 name: Vercel Production Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 on:
   push:
     branches:
       - main
 jobs:
-  Deploy-Production:
+  Generate-Matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      project-matrix: ${{ steps.set-project-ids.outputs.project-matrix }}
+    steps:
+      - name: Extract Matrix
+        id: set-project-ids
+        run: |
+          echo "project-matrix=$(echo '${{ vars.PROJECT_IDS }}' | jq -r 'keys' | tr -d ' \n\t\r')" >> "$GITHUB_OUTPUT"
+
+  Deploy-Preview:
+    needs: [Generate-Matrix]
     strategy:
       matrix:
-        experiment:
-          - retro-gaming
-          - chaos-sphere
-          - cosmic-platform
-          - work-from-home
-          - extra-dimensional-input-form
-          - oceanic-horizon
-          - s-rank-jutsu
-          - skywalker
-          - metaballs
+        experiment: ${{ fromJson(needs.Generate-Matrix.outputs.project-matrix) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -26,13 +30,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -52,15 +59,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
+      - name: Check For Changes
+        id: check-for-changes
+        continue-on-error: true
+        run: |
+          pnpm dlx turbo-ignore ${{ matrix.experiment }} --task=build
 
-      - name: Pull Vercel Environment
-        run: vercel pull --environment=production -t ${{ secrets.VERCEL_TOKEN }} -y
-
-      - name: Build Project Artifacts
-        run: vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y --prod
-
-      - name: Deploy Project Artifacts to Vercel
-        if: !env.ACT
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build and Deploy
+        if: ${{steps.check-for-changes.outcome}} == "failure"
+        run: |
+          pnpm install --global vercel@latest
+          vercel pull --environment=production -t ${{ secrets.VERCEL_TOKEN }} -y
+          vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y --prod
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

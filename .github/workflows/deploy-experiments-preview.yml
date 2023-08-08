@@ -31,25 +31,16 @@ jobs:
         with:
           node-version: 18
 
-      - name: Check For Changes
-        id: check-for-changes
-        continue-on-error: true
-        run: |
-          npx turbo-ignore ${{ matrix.experiment }} --task=build
-
       - uses: pnpm/action-setup@v2
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         with:
           version: 8
 
       - name: Get pnpm store directory
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
       - uses: actions/cache@v3
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -58,31 +49,26 @@ jobs:
             ${{ runner.os }}-${{ matrix.experiment }}-pnpm-store-
 
       - name: Extract Project ID
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         id: set-project-id
         run: |
           echo "PROJECT_ID=$(echo '${{ vars.PROJECT_IDS }}' | jq '."${{ matrix.experiment }}"')" >> $GITHUB_ENV
 
       - name: Set Project ID as Environment Variable
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         run: echo "VERCEL_PROJECT_ID=${{ fromJson(env.PROJECT_ID) }}" >> $GITHUB_ENV
 
       - name: Install dependencies
-        if: ${{steps.check-for-changes.outcome}} == "failure"
         run: pnpm install
 
-      - name: Install Vercel CLI
-        if: ${{steps.check-for-changes.outcome}} == "failure"
-        run: pnpm install --global vercel@latest
+      - name: Check For Changes
+        id: check-for-changes
+        continue-on-error: true
+        run: |
+          pnpm dlx turbo-ignore ${{ matrix.experiment }} --task=build
 
-      - name: Pull Vercel Environment
+      - name: Build and Deploy
         if: ${{steps.check-for-changes.outcome}} == "failure"
-        run: vercel pull --environment=preview -t ${{ secrets.VERCEL_TOKEN }} -y
-
-      - name: Build Project Artifacts
-        if: ${{steps.check-for-changes.outcome}} == "failure"
-        run: vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y
-
-      - name: Deploy Project Artifacts to Vercel
-        if: (!env.ACT && ${{ env.CHANGES }} == "1")
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          pnpm install --global vercel@latest
+          vercel pull --environment=preview -t ${{ secrets.VERCEL_TOKEN }} -y
+          vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
