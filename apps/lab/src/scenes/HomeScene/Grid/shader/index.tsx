@@ -14,6 +14,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseGridMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.premultipliedAlpha = true;
   m.blending = AdditiveBlending;

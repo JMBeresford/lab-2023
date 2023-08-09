@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter skywalker",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/skywalker/dist",
+  "public": true
+}

@@ -4,6 +4,7 @@ import { useLabStore } from "@/helpers/store";
 import styles from "./LoadScreen.module.scss";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { useProgress } from "@react-three/drei";
+import { usePathname } from "next/navigation";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -18,8 +19,10 @@ const exo = Exo({
 
 export function LoadScreen() {
   const entered = useLabStore((state) => state.entered);
-
+  const path = usePathname();
   const { progress } = useProgress();
+
+  if (!["/", "/experiments"].includes(path)) return null;
 
   return (
     <div

@@ -1,3 +1,4 @@
+import "./App.css";
 import { Scene } from "./Scene";
 
 export function Experiment() {

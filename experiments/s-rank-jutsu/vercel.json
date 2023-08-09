@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter s-rank-jutsu",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/s-rank-jutsu/dist",
+  "public": true
+}

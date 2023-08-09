@@ -1,4 +1,4 @@
-import { defaultMetadata } from "@/helpers/metadata";
+import { getMetadata } from "@/helpers/metadata";
 import { ExperimentList } from "../../src/components/ExperimentList";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Metadata } from "next";
@@ -11,7 +11,7 @@ export default function Page() {
   );
 }
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: `Experiments | ${defaultMetadata.title}`,
-};
+export const metadata: Metadata = getMetadata({
+  prefixTitle: "Experiments",
+  suffixUrl: "experiments",
+});

@@ -32,6 +32,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseReticleMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.premultipliedAlpha = true;
   m.depthTest = false;
@@ -39,7 +40,7 @@ const BaseReticleMaterial = shaderMaterial(uniforms, vertexShader, fragmentShade
 
 extend({ BaseReticleMaterial });
 
-export type ReticleMaterialProps = Uniforms & ShaderMaterial;
+export type ReticleMaterialProps = Partial<Uniforms> & ShaderMaterial;
 
 declare global {
   namespace JSX {

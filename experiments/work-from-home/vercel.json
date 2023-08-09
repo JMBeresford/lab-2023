@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter work-from-home",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/work-from-home/dist",
+  "public": true
+}

@@ -12,6 +12,7 @@ export function HoverSound(props: Props) {
   const hovering = useLabStore((s) => s.hovering);
 
   useLayoutEffect(() => {
+    if (!ref.current) return;
     ref.current.setVolume(0.25);
   }, []);
 

@@ -1,12 +1,12 @@
 "use client";
 
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { SceneTunnel } from "./tunnel";
-import { ReactNode, useEffect, useRef } from "react";
+import { MutableRefObject, ReactNode, useRef } from "react";
 import { ACESFilmicToneMapping } from "three";
 
 export function SceneRoot(props: { children: ReactNode }) {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
 
   return (
     <div

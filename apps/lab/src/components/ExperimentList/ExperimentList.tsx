@@ -1,6 +1,7 @@
 "use client";
 
 import { ExperimentData, ExperimentDatum } from "experiment-data";
+import { ExperimentImages } from "experiment-images";
 import styles from "./ExperimentList.module.scss";
 import { Bebas_Neue, Exo } from "next/font/google";
 import { hoverHandlers } from "@/helpers/utils";
@@ -20,7 +21,7 @@ const exo = Exo({
 });
 
 function ListEntry({ experiment, idx }: { experiment: ExperimentDatum; idx: number }) {
-  const ref = useRef<HTMLImageElement>(undefined);
+  const ref = useRef<HTMLImageElement>(null);
   const [hovered, setHovered] = useState<boolean>(false);
 
   const style = useSpring({
@@ -41,12 +42,13 @@ function ListEntry({ experiment, idx }: { experiment: ExperimentDatum; idx: numb
         setHovered(false);
       }}
       onPointerMove={(e) => {
+        if (!ref.current) return;
         ref.current.style.transform = `translateX(calc(-50% + ${e.clientX}px)) translateY(calc(-50% + ${e.clientY}px))`;
       }}
     >
       <animated.img
         ref={ref}
-        src={experiment.image}
+        src={ExperimentImages[experiment.name]}
         className={styles.previewImg}
         alt={experiment.label}
         style={style}

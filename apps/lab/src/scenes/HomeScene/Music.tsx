@@ -18,7 +18,7 @@ export function Music(props: Props) {
   const [inFocus, setInFocus] = useState<boolean>(true);
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    const handler = () => {
       setInFocus(!document.hidden);
     };
 
@@ -30,7 +30,7 @@ export function Music(props: Props) {
   }, []);
 
   useLayoutEffect(() => {
-    if (entered && !ref.current.isPlaying) {
+    if (ref.current && entered && !ref.current.isPlaying) {
       ref.current.gain.gain.value = 0;
 
       ref.current.play(startTime ?? 0);
@@ -38,7 +38,7 @@ export function Music(props: Props) {
   }, [entered, startTime]);
 
   useEffect(() => {
-    if (!ref.current.isPlaying) return;
+    if (!ref.current?.isPlaying) return;
     if (!muted && inFocus && ["/", "/experiments"].includes(path)) {
       const gain = ref.current.gain.gain;
 

@@ -1,0 +1,21 @@
+{
+  "name": "experiment-images",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tsconfig": "workspace:*",
+    "experiment-data": "workspace:*",
+    "typescript": "^5.0.4",
+    "next": "13.4.4"
+  },
+  "peerDependencies": {
+    "next": "13.4.4"
+  }
+}

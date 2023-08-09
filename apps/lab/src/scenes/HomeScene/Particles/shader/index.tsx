@@ -17,6 +17,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseParticlesMaterial = shaderMaterial(uniforms, vertShader, fragShader, (m) => {
+  if (!m) return;
   m.transparent = true;
   m.depthTest = false;
 });

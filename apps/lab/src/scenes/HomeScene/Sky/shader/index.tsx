@@ -17,6 +17,7 @@ const uniforms: Uniforms = {
 };
 
 const BaseSkyMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader, (m) => {
+  if (!m) return;
   m.transparent = false;
   m.depthWrite = false;
   m.side = BackSide;

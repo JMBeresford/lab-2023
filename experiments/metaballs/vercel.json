@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter metaballs",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/metaballs/dist",
+  "public": true
+}

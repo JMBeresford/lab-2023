@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run build --filter retro-gaming",
+  "installCommand": "pnpm install",
+  "outputDirectory": "/experiments/retro-gaming/dist",
+  "public": true
+}
