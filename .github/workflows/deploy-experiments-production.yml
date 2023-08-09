@@ -68,7 +68,7 @@ jobs:
           pnpm dlx turbo-ignore ${{ matrix.experiment }} --task=build
 
       - name: Build and Deploy
-        if: ${{steps.check-for-changes.outcome}} == "failure"
+        if: failure() && steps.check-for-changes.outcome == 'failure'
         run: |
           pnpm install --global vercel@latest
           vercel pull --environment=production -t ${{ secrets.VERCEL_TOKEN }} -y
