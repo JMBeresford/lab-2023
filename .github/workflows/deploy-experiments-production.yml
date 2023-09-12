@@ -73,4 +73,4 @@ jobs:
           pnpm install --global vercel@latest
           vercel pull --environment=production -t ${{ secrets.VERCEL_TOKEN }} -y
           vercel build -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} -y --prod
-          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy -A experiments/${{ matrix.experiment }}/vercel.json -t ${{ secrets.VERCEL_TOKEN }} --prebuilt --prod
